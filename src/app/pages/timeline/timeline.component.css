@@ -331,6 +331,7 @@ header h1 {
 }
 .cd-timeline-content {
   position: relative;
+  min-width: 300px;
   margin-left: 60px;
   background: #ffffff7a;;
   border-radius: 0.25em;
@@ -554,7 +555,6 @@ header h1 {
     -o-transform: translateX(100px);
     transform: translateX(100px);
   }
-
   60% {
     opacity: 1;
     -webkit-transform: translateX(-20px);
@@ -563,7 +563,6 @@ header h1 {
     -o-transform: translateX(-20px);
     transform: translateX(-20px);
   }
-
   100% {
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
@@ -572,8 +571,6 @@ header h1 {
     transform: translateX(0);
   }
 }
-
-/* for custom scrollbar for webkit browser*/
 
 ::-webkit-scrollbar {
   width: 6px;
