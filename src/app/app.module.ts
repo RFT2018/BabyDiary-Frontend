@@ -7,6 +7,8 @@ import { NavComponent } from './nav/nav.component';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import {Routes} from '@angular/router';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { RegistrationComponent } from './pages/registration/registration.compone
     NavComponent,
     TimelineComponent,
     ProfileComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule
@@ -24,3 +27,18 @@ import { RegistrationComponent } from './pages/registration/registration.compone
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+const appRoutes: Routes = [{
+    path: 'login',
+    pathMatch: 'full',
+    component: LoginComponent
+  }, {
+  path: 'registration',
+  pathMatch: 'full',
+  component: RegistrationComponent
+  }, {
+    path: 'timeline',
+    pathMatch: 'full',
+    component: TimelineComponent
+  }
+];
