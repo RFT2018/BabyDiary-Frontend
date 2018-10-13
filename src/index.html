@@ -1,14 +1,89 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>BabyDiaryFrontend</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/global-style.css">
+  <link rel="stylesheet" href="assets/css/master-style.css">
+  <!-- Script -->
+
+  <!-- title -->
+  <title>BabyDiary</title>
+  <link rel="shortcut icon" href="assets/css/images/abyDiary-logo.png">
 </head>
-<body>
+
+<body class="master">
+<div class="background">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-1 pr-1">
+    <a class="navbar-brand babydiary" href="index">
+      <img src="assets/css/images/abyDiary-logo.png" />BabyDiary
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active px-2">
+          <a class="nav-link" href="index">Gyermek
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item px-1">
+          <a class="nav-link" href="timeline">Idővonal</a>
+        </li>
+        <li class="nav-item px-1">
+          <a class="nav-link" href="tobuy">Kívánságlista</a>
+        </li>
+        <li class="nav-item px-1">
+        </li>
+
+        <li class="nav-item dropdown mr-1 ml-1">
+          <a class="nav-link dropdown-toggle btn-group nowrap" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">Szórakozás</a>
+          <div class="dropdown-menu  dropdown-menu-right text-right mt-2" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="childdevelopment">Kézségfejlesztés</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="recipe">Receptfüzet</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="music">Zene</a>
+          </div>
+        </li>
+
+        <li class="nav-item px-1">
+          <a class="nav-link" href="aboutus">Rólunk</a>
+        </li>
+
+        <li class="nav-item dropdown mr-1 ml-1">
+          <a class="nav-link dropdown-toggle btn-group nowrap" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">Profil</a>
+          <div class="dropdown-menu  dropdown-menu-right text-right mt-2" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="profile">Profilom</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Kijelentkezés</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <app-root></app-root>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
