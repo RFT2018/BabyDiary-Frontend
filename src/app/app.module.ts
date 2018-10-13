@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NavComponent } from './nav/nav.component';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     LoginComponent,
     NavComponent,
     TimelineComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule
