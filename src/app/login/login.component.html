@@ -1,9 +1,9 @@
 
-<div class="container">
+<div [ngClass]="{'container': true}">
   <div class="row my-auto">
     <div class="col-8 col-sg-12 col-lg-6 mx-auto">
-      <div class="card login-card mb-3">
-        <div class="card-header login-card-header text-uppercase">Bejelentkezés</div>
+      <div [ngClass]="{'card': true}" class="mb-3">
+        <div [ngClass]="{'login-card-header': true}" class="card-header text-uppercase">Bejelentkezés</div>
         <div class="card-body">
           <form>
             <div class="form-group">
@@ -25,11 +25,11 @@
                 <button class="col mx-2 mx-auto btn btn btn-primary btn-lg btn-block text-uppercase" href="index" role="button">Bejelentkezés</button>
               </div>
               <div class="row d-flex my-lg-2 mx-auto col-10 text-center">
-                <button type="submit" class="col align-self-start btn loginBtn loginBtn--facebook py-1 my-1 mr-md-1">
-                  <img src="css/images/facebook.svg" height="20" alt="" class="mr-2 mb-1" />Facebook
+                <button type="submit" [ngClass]="{'loginBtn--facebook': true}" class="col align-self-start btn py-1 my-1 mr-md-1">
+                  <img src="assets/css/images/facebook.svg" height="20" alt="" class="mr-2 mb-1" />Facebook
                 </button>
-                <button type="submit" class="col align-self-end btn loginBtn loginBtn--google py-1 my-1 ml-md-1">
-                  <img src="css/images/google.svg" height="25" alt="" class="mr-2" />Google
+                <button type="submit" [ngClass]="{'loginBtn--google': true}" class="col align-self-end btn py-1 my-1 ml-md-1">
+                  <img src="assets/css/images/google.svg" height="25" alt="" class="mr-2" />Google
                 </button>
               </div>
               <p class="small pt-1 ">

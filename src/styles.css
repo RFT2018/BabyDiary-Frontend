@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Galindo');
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:700');
+
+html{
+  font-size: 16px;
+}
+
+@media (min-width: 728px){
+  html{
+    font-size: 18px;
+  }
+}
+
+.font-lg {
+  font-size: 1.4rem;
+}
+
+.nowrap{
+  white-space: nowrap;
+}
+
+.background{
+  background-image: url("assets/css/images/background/cloud-sky_1080p.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+button {
+  color: aliceblue;
+}
+.babydiary img{
+  height: 30px;
+  margin-right: 10px;
+}

@@ -10,15 +10,16 @@
 
 .card{
   min-width: 300px;
-}
-
-.login-card{
   color: #fff;
   background-color: rgba(36, 89, 133, 0.8);
 }
 
-.login-card a{
+.card a{
   color: #eff0f7;
+}
+
+.card input{
+  background-color: rgba(44, 62, 76, 0.8);
 }
 
 .login-card-header{
