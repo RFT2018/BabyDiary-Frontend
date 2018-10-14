@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavbarComponent implements OnInit {
 
   constructor() {}
 
