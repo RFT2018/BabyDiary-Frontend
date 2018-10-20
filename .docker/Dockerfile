@@ -1,12 +1,10 @@
-# Stage 1
-FROM node:4.6.1-slim
+FROM resin/raspberry-pi-node
 MAINTAINER noway0032 <noway0032@gmail.com>
-RUN apt-get install -y git
 RUN mkdir -p /app
 WORKDIR /app
-CMD ["ng", "new", "BabyDiary-Frontend"]
-CMD ["git", "clone", "https://github.com/RFT2018/BabyDiary-Frontend.git", "temp"]
-COPY /temp/. /app/BabyDiary-Frontend
+RUN npm install -g @angular/cli
+RUN ng new BabyDiary-Frontend
 WORKDIR /app/BabyDiary-Frontend
+COPY . .
 EXPOSE 4200
 CMD ["ng", "serve", "--open"]
