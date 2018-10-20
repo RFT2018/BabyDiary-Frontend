@@ -7,4 +7,4 @@ RUN ng new BabyDiary-Frontend
 WORKDIR /app/BabyDiary-Frontend
 COPY . .
 EXPOSE 4200
-CMD ["ng", "serve", "--open"]
+CMD ["ng", "serve", "--host 0.0.0.0"]
