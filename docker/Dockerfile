@@ -4,7 +4,6 @@ RUN npm install --save-dev @angular/cli@latest
 RUN mkdir -p /app
 WORKDIR /app
 COPY package.json package.json
-RUN npm cache clean
 RUN npm install
 EXPOSE 4200
 VOLUME ["/app"]
