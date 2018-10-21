@@ -1,4 +1,4 @@
-sudo docker rmi -f babydiary-frontend
+sudo docker rmi -f noway0032/babydiary-frontend:v2
 sudo docker build -f jenkins/Dockerfile -t noway0032/babydiary-frontend:v2 .
 sudo cp -r * /jenkins/babydiary-frontend-temp
 sudo rm -rf *
