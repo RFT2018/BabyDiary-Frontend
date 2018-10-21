@@ -1,4 +1,5 @@
 sudo docker rmi -f 'noway0032/babydiary-frontend:latest'
+
 sudo rm -rf /docker-babydiary-frontend-temp
 sudo mkdir -p /docker-babydiary-frontend-temp
 sudo cd /docker-babydiary-frontend-temp
