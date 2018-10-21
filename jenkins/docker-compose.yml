@@ -7,5 +7,5 @@ services:
     ports:
     - 80:4200
     volumes:
-      - /docker/babydiary-frontend-temp:/app
+      - /jenkins/babydiary-frontend-temp:/app
     command: ['npm start']
