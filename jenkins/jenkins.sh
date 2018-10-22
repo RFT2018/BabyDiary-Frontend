@@ -26,7 +26,7 @@ sudo docker run -d --restart always --name $PROJECT_NAME -v /docker/$PROJECT_NAM
 echo -e "###\n###\t A uj '$PROJECT_NAME' repo elinditva \n###"
 
 sudo docker rmi -f noway0032/$PROJECT_NAME:latest
-echo -e "###\n###\t Az aktuális '$PROJECT_NAME' image torolve \n###"
+echo -e "###\n###\t Az aktualis '$PROJECT_NAME' image torolve \n###"
 
 sudo rm -rf *
 echo -e "###\n###\t GIT mappa torolve, zaro tarhely \n###"
