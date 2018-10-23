@@ -2,18 +2,23 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "defaultProject": "babydiary-frontend",
   "projects": {
-    "BabyDiaryFrontend": {
+    "babydiary-frontend": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/BabyDiaryFrontend",
+            "outputPath": "dist/babydiary-frontendB",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,9 +28,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -50,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "BabyDiaryFrontend:build"
+            "browserTarget": "babydiary-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "BabyDiaryFrontend:build:production"
+              "browserTarget": "babydiary-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "BabyDiaryFrontend:build"
+            "browserTarget": "babydiary-frontend:build"
           }
         },
         "test": {
@@ -95,7 +105,7 @@
         }
       }
     },
-    "BabyDiaryFrontend-e2e": {
+    "babydiary-frontend-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "BabyDiaryFrontend:serve"
+            "devServerTarget": "babydiary-frontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "BabyDiaryFrontend:serve:production"
+              "devServerTarget": "babydiary-frontend:serve:production"
             }
           }
         },
@@ -121,12 +131,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "BabyDiaryFrontend",
-  "schematics": {
-    "@schematics/angular:component": {
-      "styleext": "scss"
     }
   }
 }

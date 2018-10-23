@@ -19,12 +19,17 @@ import { RecipeComponent } from './pages/relaxation/recipe/recipe.component';
 import { DocComponent } from './pages/relaxation/doc/doc.component';
 import { ChilddevelopmentComponent } from './pages/relaxation/childdevelopment/childdevelopment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
+import {AlertModule, BsDropdownModule, CarouselModule, setTheme} from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    CarouselModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    AlertModule.forRoot()
   ],
   exports: [ RouterModule ],
   declarations: [
@@ -47,7 +52,12 @@ import { AboutusComponent } from './pages/aboutus/aboutus.component';
     AboutusComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    NavbarComponent]
 })
 export class AppModule {
+  constructor() {
+    setTheme('bs4');
+  }
 }
