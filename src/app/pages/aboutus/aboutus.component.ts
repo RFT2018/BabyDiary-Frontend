@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-aboutus',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutusComponent {
 
-  title = 'app';
+  title = 'Look jQuery Animation working in action!';
   show = true;
   inputContent = 'tesztüzenet';
   events = ['sziget', 'efot', 'fezen'];
