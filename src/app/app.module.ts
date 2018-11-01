@@ -19,7 +19,8 @@ import { RecipeComponent } from './pages/relaxation/recipe/recipe.component';
 import { DocComponent } from './pages/relaxation/doc/doc.component';
 import { ChilddevelopmentComponent } from './pages/relaxation/childdevelopment/childdevelopment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
-import {BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
+import { BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
+import { TimelinePostComponent } from './elements/timeline-post/timeline-post.component';
 
 @NgModule({
   imports: [
@@ -47,9 +48,11 @@ import {BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
     RecipeComponent,
     DocComponent,
     ChilddevelopmentComponent,
-    AboutusComponent
+    AboutusComponent,
+    TimelinePostComponent
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [
     AppComponent]
 })

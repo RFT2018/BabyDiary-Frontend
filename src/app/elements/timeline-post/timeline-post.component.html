@@ -1,0 +1,36 @@
+<div class="buttonDiv" (click)="bodyDivShow()">
+  <button type="button" class="btn btn-primary mx-auto">{{ newEventButtomText }}</button>
+</div>
+<div class="bodyDiv" [hidden]="newEventHide">
+  <div class="col-8 col-sg-12 col-lg-6 mx-auto pt-4 pb-1">
+    <div class="card login-card">
+      <div class="card-body">
+        <form class="mb-0">
+          <div class="form-group mb-0">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle w-100 mb-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Gyermek
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Kata</a>
+                <a class="dropdown-item" href="#">Zoli</a>
+                <a class="dropdown-item" href="#">Pisti</a>
+              </div>
+            </div>
+            <div class="form-group">
+              <input #newEventTitle type="text" class="form-control" placeholder="Cím">
+            </div>
+            <div class="form-group">
+              <textarea #newEventAlles  type="text" class="form-control" placeholder="Részletek"></textarea>
+            </div>
+            <div class="form-group mb-0">
+              <input #newEventDate type="datetime-local" class="form-control" value={{eventDateStringR}} min="2001-01-01T00:00:00" max="2050-12-31T00:00:00">
+            </div>
+            <div class="card-footer bg-transparent"></div>
+            <a class="btn btn-info btn-block" (click)="addEvent(newEventTitle, newEventAlles, newEventDate)" role="button">Hozzáad</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
