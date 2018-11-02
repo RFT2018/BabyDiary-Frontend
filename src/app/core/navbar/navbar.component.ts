@@ -9,7 +9,9 @@ import {UserService} from '../../shared/service/user.service';
 export class NavbarComponent {
   isCollapsedMasterMenu = true;
   isCollapsedMasterSec = 0;
-  constructor(public userService: UserService) { }
+
+  constructor(private userService: UserService) { }
+
   logOut() {
     this.userService.logOut();
   }

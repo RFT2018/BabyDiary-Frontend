@@ -5,6 +5,12 @@
       <div [ngClass]="{'card': true}" class="mb-3">
         <div [ngClass]="{'login-card-header': true}" class="card-header text-uppercase">Bejelentkezés</div>
         <div class="card-body">
+          <div *ngFor="let alert of alerts">
+            <alert [type]="alert.type"
+                   [dismissOnTimeout]="alert.timeout"
+                   (onClosed)="onClosed(alert)">
+              {{ alert.msg }}</alert>
+          </div>
           <form id="loginForm" novalidate>
             <div class="form-group">
               <label for="exampleInputEmail">Add meg az email címed</label>
@@ -54,7 +60,7 @@
                 </button>
               </div>
               <p class="small pt-1 ">
-                <a href="registration">Még nem regisztáltál?</a>
+                <a routerLink="/registration">Még nem regisztáltál?</a>
               </p>
             </div>
           </form>

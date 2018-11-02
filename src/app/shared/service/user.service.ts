@@ -1,6 +1,5 @@
 import {UserModel} from '../model/user-model';
 import {UserRole} from '../enum/user-role.enum';
-import {Sex} from '../enum/sex.enum';
 import {Router} from '@angular/router';
 import { Injectable } from '@angular/core';
 
@@ -18,9 +17,9 @@ export class UserService {
 
   logIn(email: string, password: string): boolean {
     if (email === 'asdf' && password === 'asdf') {
-      this._user = this.getUserExamples();
+      this._user = new UserModel(UserModel.getUserExamples);
       this._isLoggedIn = true;
-      this._router.navigate(['/timeline'] );
+      this._router.navigate(['timeline'] );
     }
     return false;
   }
@@ -28,7 +27,17 @@ export class UserService {
   logOut() {
     delete(this._user);
     this._isLoggedIn = false;
-    this._router.navigate([''] );
+    this._router.navigate(['/login'] );
+  }
+
+  register(param?: UserModel) {
+    if (param) {
+      this._user = new UserModel(param);
+    } else {
+      this._user = new UserModel(UserModel.getUserExamples);
+    }
+    this._isLoggedIn = true;
+    this._router.navigate(['profile'] );
   }
 
   getLogInStatus(): boolean {
@@ -36,20 +45,6 @@ export class UserService {
   }
 
   getAdminStatus(): boolean {
-    return this._user.userRole === UserRole.ADMIN;
-  }
-
-  getUserExamples(): UserModel {
-    return {
-      id: 1,
-      email: 'asdf@asdf.asdf',
-      passsword: 'asdf',
-      nickName: 'Robi',
-      userRole: UserRole.PARENT,
-      firstName: 'T.',
-      lastName: 'Róbert',
-      sex: Sex.MALE,
-      dateTime: new Date('2018-04-01T20:15')
-    };
+    return this._isLoggedIn ? this._user.userRole === UserRole.ADMIN : false;
   }
 }
