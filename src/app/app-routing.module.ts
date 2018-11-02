@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './user/login/login.component';
+import {LoginComponent} from './pages/profil/login/login.component';
 import {TimelineComponent} from './pages/timeline/timeline.component';
-import {ProfileComponent} from './user/profile/profile.component';
-import {PageNotFoundComponent} from './core/page-not-found/page-not-found.component';
-import {RegistrationComponent} from './user/registration/registration.component';
+import {ProfileComponent} from './pages/profil/profile/profile.component';
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {RegistrationComponent} from './pages/profil/registration/registration.component';
 import {ChildComponent} from './pages/child/child.component';
 import {BasketComponent} from './pages/basket/basket.component';
-import {AdminComponent} from './admin/admin.component';
+import {AdminComponent} from './pages/profil/admin/admin.component';
 import {MultimediaComponent} from './pages/relaxation/multimedia/multimedia.component';
 import {RecipeComponent} from './pages/relaxation/recipe/recipe.component';
 import {DocComponent} from './pages/relaxation/doc/doc.component';
@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'child', component: ChildComponent },
+  { path: 'child', component: ChildComponent},
   { path: 'timeline', component: TimelineComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'admin', component: AdminComponent },

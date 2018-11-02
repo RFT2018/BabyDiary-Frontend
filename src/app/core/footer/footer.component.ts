@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {getDate} from 'ngx-bootstrap/chronos/utils/date-getters';
-import {Local} from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'app-footer',

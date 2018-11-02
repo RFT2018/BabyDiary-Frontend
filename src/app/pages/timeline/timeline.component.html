@@ -1,16 +1,13 @@
-<app-timeline-post></app-timeline-post>
+<div class="buttonDiv">
+  <button type="button" class="btn btn-primary mx-auto" (click)="bodyDivShow()">{{ newEventButtomText }}</button>
+</div>
+<app-timeline-post [hidden]="newEventHide"></app-timeline-post>
 <div class="timeline-box">
   <section id="cd-timeline" class="cd-container">
-    <div class="cd-timeline-block" *ngFor="let ev of events">
-      <div class="cd-timeline-img cd-picture">
-        <img class="img-circle" src="./assets/temporary/{{ ev.kinderId }}.png" alt="Picture">
-      </div>
-      <div class="cd-timeline-content">
-        <h2>{{ ev.title }}</h2>
-        <p>{{ ev.bodyText }}</p>
-        <a href="timeline/{{ ev.id }}" class="cd-read-more">Bővebben</a>
-        <span class="cd-date">{{ ev.dateTime }}</span>
-      </div>
-    </div>
+    <app-eventcard
+      class="cd-timeline-block"
+      *ngFor="let ec of events"
+      [esemeny]="ec">
+    </app-eventcard>
   </section>
 </div>
