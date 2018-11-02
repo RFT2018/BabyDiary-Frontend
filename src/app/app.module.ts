@@ -19,18 +19,20 @@ import { RecipeComponent } from './pages/relaxation/recipe/recipe.component';
 import { DocComponent } from './pages/relaxation/doc/doc.component';
 import { ChilddevelopmentComponent } from './pages/relaxation/childdevelopment/childdevelopment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
-import { BsDropdownModule, CollapseModule } from 'ngx-bootstrap';
+import {AlertModule, BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
 import { TimelinePostComponent } from './elements/timeline-post/timeline-post.component';
 import { EventService } from './shared/service/event.service';
 import { EventcardComponent } from './elements/eventcard/eventcard.component';
+import {UserService} from './shared/service/user.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     CollapseModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    AlertModule.forRoot(),
+    AppRoutingModule
   ],
   exports: [ RouterModule ],
   declarations: [
@@ -55,7 +57,8 @@ import { EventcardComponent } from './elements/eventcard/eventcard.component';
     EventcardComponent
   ],
   providers: [
-    EventService
+    EventService,
+    UserService
   ],
   bootstrap: [
     AppComponent]

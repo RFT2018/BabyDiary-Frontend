@@ -15,10 +15,15 @@ import {ChilddevelopmentComponent} from './pages/relaxation/childdevelopment/chi
 import {AboutusComponent} from './pages/aboutus/aboutus.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'registration', component: RegistrationComponent },
+  { path: '', redirectTo: 'user/login', pathMatch: 'full' },
+  { path: 'user',
+    children: [
+      { path: '', component: ProfileComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'registration', component: RegistrationComponent },
+    ]
+  },
   { path: 'child', component: ChildComponent},
   { path: 'timeline', component: TimelineComponent },
   { path: 'basket', component: BasketComponent },
@@ -37,6 +42,4 @@ const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {
-  constructor() {
-  }
 }

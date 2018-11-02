@@ -6,7 +6,7 @@
         <span class="tooltiptext-aboutus">Rólunk</span>
       </a>
     </div>
-    <button
+    <button *ngIf="logInStatus()"
       type="button"
       class="navbar-toggler collapsed  ml-auto"
       (click)="isCollapsedMasterMenu = !isCollapsedMasterMenu"
@@ -15,7 +15,7 @@
       aria-expanded="false">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" [collapse]=isCollapsedMasterMenu>
+    <div *ngIf="logInStatus()" class="collapse navbar-collapse" [collapse]=isCollapsedMasterMenu>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item px-2">
           <a class="nav-link" routerLink="/child">Gyermek</a>
@@ -60,8 +60,8 @@
             (mouseleave)="isCollapsedMasterSec = 0"
             class="dropdown-menu  dropdown-menu-right text-right mt-2" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="profile">Profilom</a>
-            <div class="dropdown-divider"></div><a class="dropdown-item" href="admin">Admin</a>
-            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Kijelentkezés</a>
+            <div *ngIf="getAdminStatus()" class="dropdown-divider"></div><a *ngIf="getAdminStatus()" class="dropdown-item" href="admin">Admin</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item" (click)="logOut()">Kijelentkezés</a>
           </div>
         </li>
       </ul>

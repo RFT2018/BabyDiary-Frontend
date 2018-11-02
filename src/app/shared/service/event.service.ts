@@ -4,7 +4,7 @@ import {EventModel} from '../model/event-model';
 @Injectable()
 export class EventService {
   private _events: EventModel[];
-  date = new Date();
+  private _date: Date = new Date();
 
   constructor() {
     this._events = this.getEventExamples();
@@ -12,16 +12,6 @@ export class EventService {
 
   getAllEvents(): EventModel[] {
     return this._events;
-  }
-
-  setAllEvents() {
-    this._events = [{
-      id: 10,
-      kinderId: 10,
-      title: '10 Névválasztás',
-      bodyText: '10 Eldöntöttük, a neve vagy Tamás vagy Tímea lesz. Ha lány akkor Tamás ... :)',
-      dateTime: '2018-01-01T01:05'
-    }];
   }
 
   getEventExamples(): EventModel[] {
@@ -42,7 +32,7 @@ export class EventService {
         kinderId: 99,
         title: 'Most',
         bodyText: '',
-        dateTime: this.date.toString()
+        dateTime: this._date.toString()
       }, {
         id: 1,
         kinderId: 1,

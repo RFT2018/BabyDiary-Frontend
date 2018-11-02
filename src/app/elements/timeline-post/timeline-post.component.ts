@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {EventService} from '../../shared/service/event.service';
 
 @Component({
   selector: 'app-timeline-post',
@@ -7,7 +6,6 @@ import {EventService} from '../../shared/service/event.service';
   styleUrls: ['./timeline-post.component.scss']
 })
 export class TimelinePostComponent {
-  private _eventService: EventService;
   eventDate = new Date();
   eventDateString = this.eventDate.getFullYear().toString() + '-'
     + addZero(this.eventDate.getMonth()).toString() + '-'
@@ -15,15 +13,13 @@ export class TimelinePostComponent {
     + addZero(this.eventDate.getHours()).toString() + ':'
     + addZero(this.eventDate.getMinutes()).toString();
 
-  constructor() {
-  }
+  constructor() { }
   addEvent(newEventTitle: HTMLInputElement,
            newEventAlles: HTMLInputElement,
            newEventDate: HTMLInputElement) {
     console.log(newEventTitle.value);
     console.log(newEventAlles.value);
     console.log(newEventDate.value);
-    this._eventService.setAllEvents();
   }
 }
 

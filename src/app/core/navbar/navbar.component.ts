@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UserService} from '../../shared/service/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,4 +9,16 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   isCollapsedMasterMenu = true;
   isCollapsedMasterSec = 0;
+  constructor(public userService: UserService) { }
+  logOut() {
+    this.userService.logOut();
+  }
+
+  logInStatus(): boolean {
+    return this.userService.getLogInStatus();
+  }
+
+  getAdminStatus(): boolean {
+    return this.userService.getAdminStatus();
+  }
 }
