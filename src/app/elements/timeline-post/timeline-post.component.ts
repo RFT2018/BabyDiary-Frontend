@@ -6,14 +6,20 @@ import {Component} from '@angular/core';
   styleUrls: ['./timeline-post.component.scss']
 })
 export class TimelinePostComponent {
-  eventDate = new Date();
-  eventDateString = this.eventDate.getFullYear().toString() + '-'
-    + addZero(this.eventDate.getMonth()).toString() + '-'
-    + addZero(this.eventDate.getDay()).toString() + 'T'
-    + addZero(this.eventDate.getHours()).toString() + ':'
-    + addZero(this.eventDate.getMinutes()).toString();
+  private eventDate = new Date();
+  private eventDateString: string;
+  constructor() {
+    this.impotTime();
+  }
 
-  constructor() { }
+  private impotTime() {
+    this.eventDateString = this.eventDate.getFullYear().toString() + '-'
+      + addZero(this.eventDate.getMonth()).toString() + '-'
+      + addZero(this.eventDate.getDay()).toString() + 'T'
+      + addZero(this.eventDate.getHours()).toString() + ':'
+      + addZero(this.eventDate.getMinutes()).toString();
+  }
+
   addEvent(newEventTitle: HTMLInputElement,
            newEventAlles: HTMLInputElement,
            newEventDate: HTMLInputElement) {
