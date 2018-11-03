@@ -1,7 +1,7 @@
 <div class="buttonDiv">
   <button type="button" class="btn btn-primary mx-auto" (click)="bodyDivShow()">{{ newEventButtomText }}</button>
 </div>
-<app-timeline-post [hidden]="newEventHide"></app-timeline-post>
+<app-timeline-post *ngIf="!newEventHide"></app-timeline-post>
 <div class="timeline-box">
   <section id="cd-timeline" class="cd-container">
     <app-eventcard

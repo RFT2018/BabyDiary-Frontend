@@ -29,8 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/bootstrap/scss/bootstrap.scss",
-              "src/assets/scss/timeline.scss"
+              "./node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js"

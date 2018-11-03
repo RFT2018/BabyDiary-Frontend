@@ -18,7 +18,7 @@ export class LoginComponent {
     if (!this._users.logIn(email, password)) {
       this.alerts.push({
         type: 'danger',
-        msg: `Hiba! Helytelen belépési adatok!`,
+        msg: `Helytelen belépési adatok!`,
         timeout: 5000
       });
     }

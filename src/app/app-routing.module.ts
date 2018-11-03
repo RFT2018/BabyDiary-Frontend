@@ -15,7 +15,7 @@ import {ChilddevelopmentComponent} from './pages/relaxation/childdevelopment/chi
 import {AboutusComponent} from './pages/aboutus/aboutus.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'registration', component: RegistrationComponent },
@@ -37,4 +37,134 @@ const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {
+  private _index = 'login';
+  private _indexLink = '/' + this._index;
+  private _login = 'login';
+  private _loginLink = '/' + this._login;
+  private _profile = 'profile';
+  private _profileLink = '/' + this._profile;
+  private _registration = 'registration';
+  private _registrationLink = '/' + this._registration;
+  private _child = 'child';
+  private _childLink = '/' + this._child;
+  private _timeline = 'timeline';
+  private _timelineLink = '/' + this._timeline;
+  private _basket = 'basket';
+  private _basketLink = '/' + this._basket;
+  private _admin = 'admin';
+  private _adminLink = '/' + this._admin;
+  private _multimedia = 'multimedia';
+  private _multimediaLink = '/' + this._multimedia;
+  private _recipe = 'recipe';
+  private _recipeLink = '/' + this._recipe;
+  private _doc = 'doc';
+  private _docLink = '/' + this._doc;
+  private _childdevelopment = 'childdevelopment';
+  private _childdevelopmentLink = '/' + this._childdevelopment;
+  private _aboutus = 'aboutus';
+  private _aboutusLink = '/' + this._aboutus;
+
+  get index(): string {
+    return this._index;
+  }
+
+  get indexLink(): string {
+    return this._indexLink;
+  }
+
+  get login(): string {
+    return this._login;
+  }
+
+  get loginLink(): string {
+    return this._loginLink;
+  }
+
+  get profile(): string {
+    return this._profile;
+  }
+
+  get profileLink(): string {
+    return this._profileLink;
+  }
+
+  get registration(): string {
+    return this._registration;
+  }
+
+  get registrationLink(): string {
+    return this._registrationLink;
+  }
+
+  get child(): string {
+    return this._child;
+  }
+
+  get childLink(): string {
+    return this._childLink;
+  }
+
+  get timeline(): string {
+    return this._timeline;
+  }
+
+  get timelineLink(): string {
+    return this._timelineLink;
+  }
+
+  get basket(): string {
+    return this._basket;
+  }
+
+  get basketLink(): string {
+    return this._basketLink;
+  }
+
+  get admin(): string {
+    return this._admin;
+  }
+
+  get adminLink(): string {
+    return this._adminLink;
+  }
+
+  get multimedia(): string {
+    return this._multimedia;
+  }
+
+  get multimediaLink(): string {
+    return this._multimediaLink;
+  }
+
+  get recipe(): string {
+    return this._recipe;
+  }
+
+  get recipeLink(): string {
+    return this._recipeLink;
+  }
+
+  get doc(): string {
+    return this._doc;
+  }
+
+  get docLink(): string {
+    return this._docLink;
+  }
+
+  get childdevelopment(): string {
+    return this._childdevelopment;
+  }
+
+  get childdevelopmentLink(): string {
+    return this._childdevelopmentLink;
+  }
+
+  get aboutus(): string {
+    return this._aboutus;
+  }
+
+  get aboutusLink(): string {
+    return this._aboutusLink;
+  }
 }

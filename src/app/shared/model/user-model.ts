@@ -2,34 +2,92 @@ import {Sex} from '../enum/sex.enum';
 import {UserRole} from '../enum/user-role.enum';
 
 export class UserModel {
-  id: number;
-  email: string;
-  password: string;
-  nickName: string;
-  userRole: UserRole;
-  firstName: string;
-  lastName: string;
-  sex: Sex;
-  dateTime: Date;
+  private _id: number;
+  private _email: string;
+  private _password: string;
+  private _nickName: string;
+  private _userRole: UserRole;
+  private _firstName: string;
+  private _lastName: string;
+  private _sex: Sex;
+  private _dateTime: Date;
 
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  get email(): string {
+    return this._email;
+  }
+
+  set email(value: string) {
+    this._email = value;
+  }
+
+  get password(): string {
+    return this._password;
+  }
+
+  set password(value: string) {
+    this._password = value;
+  }
+
+  get nickName(): string {
+    return this._nickName;
+  }
+
+  set nickName(value: string) {
+    this._nickName = value;
+  }
+
+  get userRole(): UserRole {
+    return this._userRole;
+  }
+
+  set userRole(value: UserRole) {
+    this._userRole = value;
+  }
+
+  get firstName(): string {
+    return this._firstName;
+  }
+
+  set firstName(value: string) {
+    this._firstName = value;
+  }
+
+  get lastName(): string {
+    return this._lastName;
+  }
+
+  set lastName(value: string) {
+    this._lastName = value;
+  }
+
+  get sex(): Sex {
+    return this._sex;
+  }
+
+  set sex(value: Sex) {
+    this._sex = value;
+  }
+
+  get dateTime(): Date {
+    return this._dateTime;
+  }
+
+  set dateTime(value: Date) {
+    this._dateTime = value;
+  }
 
   constructor(param?: UserModel) {
     if (param) {
       Object.assign(this, param);
     }
-  }
-
-  static get getUserExamples(): UserModel {
-    return {
-      id: 1,
-      email: 'asdf@asdf.asdf',
-      password: 'asdf',
-      nickName: 'Robi',
-      userRole: UserRole.PARENT,
-      firstName: 'T.',
-      lastName: 'Róbert',
-      sex: Sex.MALE,
-      dateTime: new Date('2018-04-01T20:15')
-    };
   }
 }
