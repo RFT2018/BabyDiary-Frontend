@@ -8,21 +8,26 @@ import {EventService} from '../../shared/service/event.service';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent {
-
   public events: EventModel[];
   newEventHide = true;
   newEventButtomText = 'Új esemény';
 
   constructor(private _eventService: EventService) {
+    this.loadData();
+  }
+
+  loadData() {
     this.events = this._eventService.getAllEvents();
   }
+
   bodyDivShow() {
     if (this.newEventHide) {
       this.newEventHide = false;
-      this.newEventButtomText = 'Mégsem';
+      this.newEventButtomText = 'Vissza';
     } else {
       this.newEventHide = true;
       this.newEventButtomText = 'Új esemény';
     }
+    this.loadData();
   }
 }

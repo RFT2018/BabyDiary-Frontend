@@ -56,3 +56,18 @@ textarea{
   color: #d6d7de;
   opacity: 1;
 }
+.custom-select {
+  color: #d6d7de;
+  background: rgba(42, 47, 51, 0.4);
+  border-color: transparent;
+}
+.custom-select::placeholder{
+  color: #d6d7de;
+  opacity: 1;
+}
+.input-group-text{
+  background: rgba(105, 164, 213, 0.8);
+  border-color: transparent;
+  color: #d6d7de;
+
+}

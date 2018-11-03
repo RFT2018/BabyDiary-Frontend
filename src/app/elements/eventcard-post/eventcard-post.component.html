@@ -2,20 +2,26 @@
   <div class="col-8 col-sg-12 col-lg-6 mx-auto pt-4 pb-1">
     <div class="card login-card">
       <div class="card-body">
+        <div *ngFor="let alert of alerts">
+          <alert [type]="alert.type"
+                 [dismissOnTimeout]="alert.timeout"
+                 (onClosed)="onClosed(alert)">
+            {{ alert.msg }}</alert>
+        </div>
         <form class="mb-0">
           <div class="form-group mb-0">
-            <div class="dropdown">
-              <button type="button"
-                      id="dropdownMenuButton"
-                      class="btn btn-secondary dropdown-toggle w-100 mb-2"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false">Gyermek</button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Kata</a>
-                <a class="dropdown-item" href="#">Zoli</a>
-                <a class="dropdown-item" href="#">Pisti</a>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Gyermek</label>
               </div>
+              <select class="custom-select"
+                      id="inputGroupSelect01"
+                      #kid>
+                <option selected>Válassz...</option>
+                <option value="1">Kata</option>
+                <option value="2">Zoli</option>
+                <option value="3">Pisti</option>
+              </select>
             </div>
             <div class="form-group">
               <input type="text"
@@ -32,6 +38,7 @@
             <div class="form-group mb-0">
               <input type="datetime-local"
                      class="form-control"
+                     [(ngModel)]="eventDate"
                      #newEventDate
                      value={{eventDateString}}
                      min="1901-01-01T00:00:00"
@@ -40,7 +47,7 @@
             <div class="card-footer bg-transparent"></div>
             <a role="button"
                class="btn btn-info btn-block"
-               (click)="addEvent(newEventTitle, newEventAlles, newEventDate)">Hozzáad</a>
+               (click)="addEvent(kid.value, newEventTitle.value, newEventAlles.value, newEventDate.value)">Hozzáad</a>
           </div>
         </form>
       </div>

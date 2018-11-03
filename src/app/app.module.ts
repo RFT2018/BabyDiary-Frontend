@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, NgForm} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { NavbarComponent } from './core/navbar/navbar.component';

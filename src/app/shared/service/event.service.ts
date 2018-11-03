@@ -10,6 +10,13 @@ export class EventService {
     this._events = this.getEventExamples();
   }
 
+  set event(value: EventModel) {
+    this._events = [
+      value,
+      ...this._events
+    ];
+  }
+
   getAllEvents(): EventModel[] {
     return this._events;
   }
