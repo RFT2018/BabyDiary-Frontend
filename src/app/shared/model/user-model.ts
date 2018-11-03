@@ -7,9 +7,9 @@ export class UserModel {
   private _password: string;
   private _nickName: string;
   private _userRole: UserRole;
-  private _firstName: string;
-  private _lastName: string;
-  private _sex: Sex;
+  private _firstName?: string;
+  private _lastName?: string;
+  private _sex?: Sex;
   private _dateTime: Date;
 
 

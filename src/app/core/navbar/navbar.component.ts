@@ -19,7 +19,7 @@ export class NavbarComponent {
   }
 
   logInStatus(): boolean {
-    return this.userService.getLogInStatus();
+    return this.userService.isLoggedIn;
   }
 
   getAdminStatus(): boolean {

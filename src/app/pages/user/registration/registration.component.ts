@@ -9,7 +9,7 @@ import {UserService} from '../../../shared/service/user.service';
 export class RegistrationComponent {
   constructor(private _userService: UserService) { }
 
-  register() {
-    this._userService.register();
+  register(email: string, password: string, nickname?: string) {
+    this._userService.register(email, password, nickname);
   }
 }

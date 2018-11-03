@@ -11,24 +11,25 @@ import {AdminComponent} from './pages/user/admin/admin.component';
 import {MultimediaComponent} from './pages/relaxation/multimedia/multimedia.component';
 import {RecipeComponent} from './pages/relaxation/recipe/recipe.component';
 import {DocComponent} from './pages/relaxation/doc/doc.component';
-import {ChilddevelopmentComponent} from './pages/relaxation/childdevelopment/childdevelopment.component';
-import {AboutusComponent} from './pages/aboutus/aboutus.component';
+import {ChildDevComponent} from './pages/relaxation/childdevelopment/child-dev.component';
+import {AboutsComponent} from './pages/aboutus/abouts.component';
+import {LoggedInGuard} from './shared/logged-in.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'child', component: ChildComponent},
-  { path: 'timeline', component: TimelineComponent },
-  { path: 'basket', component: BasketComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'multimedia', component: MultimediaComponent },
-  { path: 'recipe', component: RecipeComponent },
-  { path: 'doc', component: DocComponent },
-  { path: 'childdevelopment', component: ChilddevelopmentComponent },
-  { path: 'aboutus', component: AboutusComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'child', component: ChildComponent, canActivate: [LoggedInGuard]},
+  { path: 'timeline', component: TimelineComponent, canActivate: [LoggedInGuard] },
+  { path: 'basket', component: BasketComponent, canActivate: [LoggedInGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [LoggedInGuard] },
+  { path: 'multimedia', component: MultimediaComponent, canActivate: [LoggedInGuard] },
+  { path: 'recipe', component: RecipeComponent, canActivate: [LoggedInGuard] },
+  { path: 'doc', component: DocComponent, canActivate: [LoggedInGuard] },
+  { path: 'chide', component: ChildDevComponent, canActivate: [LoggedInGuard] },
+  { path: 'abouts', component: AboutsComponent },
+  { path: '**', component: PageNotFoundComponent, canActivate: [LoggedInGuard] }
 ];
 
 @NgModule({
@@ -62,9 +63,9 @@ export class AppRoutingModule {
   private _recipeLink = '/' + this._recipe;
   private _doc = 'doc';
   private _docLink = '/' + this._doc;
-  private _childdevelopment = 'childdevelopment';
-  private _childdevelopmentLink = '/' + this._childdevelopment;
-  private _aboutus = 'aboutus';
+  private _chide = 'chide';
+  private _childdevelopmentLink = '/' + this._chide;
+  private _aboutus = 'abouts';
   private _aboutusLink = '/' + this._aboutus;
 
   get index(): string {
@@ -155,8 +156,8 @@ export class AppRoutingModule {
     return this._docLink;
   }
 
-  get childdevelopment(): string {
-    return this._childdevelopment;
+  get chide(): string {
+    return this._chide;
   }
 
   get childdevelopmentLink(): string {

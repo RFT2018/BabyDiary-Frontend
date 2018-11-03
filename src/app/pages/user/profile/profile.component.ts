@@ -22,15 +22,15 @@ export class ProfileComponent {
   private _dateTime: Date;
 
   constructor(private _userService: UserService) {
-    if (this._userService.getLogInStatus()) {
-      this._id = _userService.getUserExamples.id;
-      this._email = _userService.getUserExamples.email;
-      this._nickName = _userService.getUserExamples.nickName;
-      this._userRole = _userService.getUserExamples.userRole;
-      this._firstName = _userService.getUserExamples.firstName;
-      this._lastName = _userService.getUserExamples.lastName;
-      this._sex = _userService.getUserExamples.sex;
-      this._dateTime = _userService.getUserExamples.dateTime;
+    if (this._userService.isLoggedIn) {
+      this._id = _userService.user.id;
+      this._email = _userService.user.email;
+      this._nickName = _userService.user.nickName;
+      this._userRole = _userService.user.userRole;
+      this._firstName = _userService.user.firstName;
+      this._lastName = _userService.user.lastName;
+      this._sex = _userService.user.sex;
+      this._dateTime = _userService.user.dateTime;
     }
   }
 

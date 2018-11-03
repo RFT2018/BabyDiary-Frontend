@@ -17,13 +17,14 @@ import { AdminComponent } from './pages/user/admin/admin.component';
 import { MultimediaComponent } from './pages/relaxation/multimedia/multimedia.component';
 import { RecipeComponent } from './pages/relaxation/recipe/recipe.component';
 import { DocComponent } from './pages/relaxation/doc/doc.component';
-import { ChilddevelopmentComponent } from './pages/relaxation/childdevelopment/childdevelopment.component';
-import { AboutusComponent } from './pages/aboutus/aboutus.component';
+import { ChildDevComponent } from './pages/relaxation/childdevelopment/child-dev.component';
+import { AboutsComponent } from './pages/aboutus/abouts.component';
 import {AlertModule, BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
 import { EventcardPostComponent } from './elements/eventcard-post/eventcard-post.component';
 import { EventService } from './shared/service/event.service';
 import { EventcardComponent } from './elements/eventcard/eventcard.component';
 import {UserService} from './shared/service/user.service';
+import {LoggedInGuard} from './shared/logged-in.guard';
 
 @NgModule({
   imports: [
@@ -51,14 +52,15 @@ import {UserService} from './shared/service/user.service';
     MultimediaComponent,
     RecipeComponent,
     DocComponent,
-    ChilddevelopmentComponent,
-    AboutusComponent,
+    ChildDevComponent,
+    AboutsComponent,
     EventcardComponent,
     EventcardPostComponent
   ],
   providers: [
     EventService,
-    UserService
+    UserService,
+    LoggedInGuard
   ],
   bootstrap: [
     AppComponent]
