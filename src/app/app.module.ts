@@ -20,7 +20,7 @@ import { DocComponent } from './pages/relaxation/doc/doc.component';
 import { ChilddevelopmentComponent } from './pages/relaxation/childdevelopment/childdevelopment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
 import {AlertModule, BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
-import { TimelinePostComponent } from './elements/timeline-post/timeline-post.component';
+import { EventcardPostComponent } from './elements/eventcard-post/eventcard-post.component';
 import { EventService } from './shared/service/event.service';
 import { EventcardComponent } from './elements/eventcard/eventcard.component';
 import {UserService} from './shared/service/user.service';
@@ -53,8 +53,8 @@ import {UserService} from './shared/service/user.service';
     DocComponent,
     ChilddevelopmentComponent,
     AboutusComponent,
-    TimelinePostComponent,
-    EventcardComponent
+    EventcardComponent,
+    EventcardPostComponent
   ],
   providers: [
     EventService,

@@ -20,7 +20,7 @@ export class UserService {
     if (email === 'asdf' && password === 'asdf') {
       this._user = new UserModel(this.getUserExamples);
       this._isLoggedIn = true;
-      this._router.navigate(['timeline'] );
+      this._router.navigate(['/timeline'] );
     }
     return false;
   }
@@ -28,7 +28,7 @@ export class UserService {
   logOut() {
     delete(this._user);
     this._isLoggedIn = false;
-    this._router.navigate(['/login'] );
+    this._router.navigate(['/'] );
   }
 
   register(param?: UserModel) {

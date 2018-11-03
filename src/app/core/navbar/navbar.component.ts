@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {UserService} from '../../shared/service/user.service';
-import {AppRoutingModule} from '../../app-routing.module';
+import {RoutingService} from '../../shared/service/routing.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +10,7 @@ import {AppRoutingModule} from '../../app-routing.module';
 export class NavbarComponent {
   isCollapsedMasterMenu = true;
   isCollapsedMasterSec = 0;
-  routing = new AppRoutingModule();
+  routing = new RoutingService().getRouting();
 
   constructor(private userService: UserService) { }
 

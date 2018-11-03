@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {UserService} from '../../../shared/service/user.service';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
-import {AppRoutingModule} from '../../../app-routing.module';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,6 @@ import {AppRoutingModule} from '../../../app-routing.module';
 export class LoginComponent {
 
   alerts: any[] = [];
-  routing = new AppRoutingModule();
 
   constructor(private _users: UserService) {
   }

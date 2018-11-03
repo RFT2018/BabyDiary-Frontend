@@ -32,23 +32,26 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {
+  private _timeline = 'timeline';
+  private _timelineLink = '/' + this._timeline;
   private _index = 'login';
   private _indexLink = '/' + this._index;
   private _login = 'login';
   private _loginLink = '/' + this._login;
+  private _loginNextLink = this._timelineLink;
+  private _logout = this._login;
+  private _logoutLink = '/' + this._logout;
   private _profile = 'profile';
   private _profileLink = '/' + this._profile;
   private _registration = 'registration';
   private _registrationLink = '/' + this._registration;
+  private _registrationNext = this._profileLink;
   private _child = 'child';
   private _childLink = '/' + this._child;
-  private _timeline = 'timeline';
-  private _timelineLink = '/' + this._timeline;
   private _basket = 'basket';
   private _basketLink = '/' + this._basket;
   private _admin = 'admin';
@@ -166,5 +169,22 @@ export class AppRoutingModule {
 
   get aboutusLink(): string {
     return this._aboutusLink;
+  }
+
+
+  get loginNextLink(): string {
+    return this._loginNextLink;
+  }
+
+  get logout(): string {
+    return this._logout;
+  }
+
+  get logoutLink(): string {
+    return this._logoutLink;
+  }
+
+  get registrationNext(): string {
+    return this._registrationNext;
   }
 }
