@@ -21,7 +21,7 @@ export class UserService {
     if (email === 'asdf' && password === 'asdf') {
       this._user = this.getUserExamples;
       this._isLoggedIn = true;
-      this._router.navigate(['/timeline'] );
+      this._router.navigate(['/profile'] );
     }
     return false;
   }
@@ -45,7 +45,7 @@ export class UserService {
     um.nickName = nick;
     um.userRole = UserRole.ADMIN;
     um.sex = Sex.MALE;
-    um.dateTime = new Date('2018-04-01T20:15');
+    um.dateTime = new Date();
     this._user = um;
     this._isLoggedIn = true;
     this._router.navigate(['/profile'] );

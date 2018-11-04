@@ -35,8 +35,8 @@ export class EventModel {
       bodyText: 'Május elseje éppen megfelelne',
       dateTime:  new Date('2018-04-01T20:15')
     }, {
-      id: 0,
-      kinderId: 99,
+      id: -1,
+      kinderId: 0,
       title: 'Most',
       bodyText: '',
       dateTime:  new Date(_now.toString())
@@ -47,11 +47,11 @@ export class EventModel {
       bodyText: 'Eldöntöttük, a neve vagy Tamás vagy Tímea lesz. Ha lány akkor Tamás ... :)',
       dateTime:  new Date('2018-01-01T01:05')
     }, {
-      id: 0,
+      id: -2,
       kinderId: 0,
       title: 'Nincs tovább',
       bodyText: '',
-      dateTime:  new Date('')
+      dateTime:  new Date('2000-01-01T00:00')
     }
     ];
   }

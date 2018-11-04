@@ -3,8 +3,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import {FormsModule, NgForm} from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { ProfileComponent } from './pages/user/profile/profile.component';
@@ -35,7 +34,7 @@ import {LoggedInGuard} from './shared/logged-in.guard';
     AlertModule.forRoot(),
     AppRoutingModule
   ],
-  exports: [ RouterModule ],
+  exports: [ ],
   declarations: [
     AppComponent,
     LoginComponent,

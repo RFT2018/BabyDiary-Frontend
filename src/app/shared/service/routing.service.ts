@@ -5,10 +5,12 @@ import {AppRoutingModule} from '../../app-routing.module';
   providedIn: 'root'
 })
 export class RoutingService {
-  constructor(private _routing = new AppRoutingModule()) {
+  private static _appRoutingModule = new AppRoutingModule();
+
+  constructor() {
   }
 
-  getRouting(): AppRoutingModule {
-    return this._routing;
+  static get appRoutingModule(): AppRoutingModule {
+    return this._appRoutingModule;
   }
 }

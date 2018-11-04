@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {EventModel} from '../../shared/model/event-model';
 import {EventService} from '../../shared/service/event.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-timeline',
@@ -9,25 +10,29 @@ import {EventService} from '../../shared/service/event.service';
 })
 export class TimelineComponent {
   events: EventModel[];
-  newEventHide = true;
   newEventButtomText: string;
+  idURL = this._route.snapshot.params['id'];
 
-  constructor(private _eventService: EventService) {
+  constructor(private _eventService: EventService,
+              private _route: ActivatedRoute,
+              private _router: Router) {
     this.loadEvents();
   }
 
   loadEvents() {
     this.events = this._eventService.events;
+    if (this.idURL) {
+      this.newEventButtomText = 'Vissza';
+    } else {
+      this.newEventButtomText = 'Új esemény';
+    }
   }
 
   bodyDivShow() {
-    if (this.newEventHide) {
-      this.newEventHide = false;
-      this.newEventButtomText = 'Vissza';
+    if (this.idURL) {
+      this._router.navigate(['/timeline'] );
     } else {
-      this.newEventHide = true;
-      this.newEventButtomText = 'Új esemény';
+      this._router.navigate(['/timeline/0/edit'] );
     }
-    this.loadEvents();
   }
 }

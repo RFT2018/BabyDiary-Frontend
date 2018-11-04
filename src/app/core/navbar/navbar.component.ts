@@ -10,7 +10,7 @@ import {RoutingService} from '../../shared/service/routing.service';
 export class NavbarComponent {
   isCollapsedMasterMenu = true;
   isCollapsedMasterSec = 0;
-  routing = new RoutingService().getRouting();
+  routing = RoutingService.appRoutingModule;
 
   constructor(private userService: UserService) { }
 
