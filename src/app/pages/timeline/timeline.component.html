@@ -1,5 +1,8 @@
 <div class="buttonDiv">
-  <button type="button" class="btn btn-primary mx-auto" (click)="bodyDivShow()">{{ newEventButtomText }}</button>
+  <button *ngIf="!newEventButtomText; else edit" type="button" class="btn btn-primary mx-auto" (click)="bodyDivShow()">Új esemény</button>
+  <ng-template #edit>
+    <button type="button" class="btn btn-primary mx-auto" (click)="bodyDivShow()">{{ newEventButtomText }}</button>
+  </ng-template>
 </div>
 <app-timeline-post *ngIf="!newEventHide"></app-timeline-post>
 <div class="timeline-box">

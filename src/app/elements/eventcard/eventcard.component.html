@@ -5,7 +5,7 @@
      [style.background-position]="'center'"
      [style.background-size]="'cover'"></div>
 <div class="cd-timeline-content">
-  <div class="settingsImage32 mx-3"></div>
+  <div class="settingsImage32 mx-3" [routerLink]="['./', esemeny.id ]"></div>
   <h2>{{ esemeny.title }}</h2>
   <p>{{ esemeny.bodyText }}</p>
   <a [hidden]="!esemeny.bodyText" [routerLink]="['./', esemeny.id ]" class="cd-read-more">Bővebben</a>

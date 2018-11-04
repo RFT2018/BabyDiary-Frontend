@@ -14,6 +14,7 @@ import {DocComponent} from './pages/relaxation/doc/doc.component';
 import {ChildDevComponent} from './pages/relaxation/childdevelopment/child-dev.component';
 import {AboutsComponent} from './pages/aboutus/abouts.component';
 import {LoggedInGuard} from './shared/logged-in.guard';
+import {EventcardPostComponent} from './elements/eventcard-post/eventcard-post.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -21,7 +22,13 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
   { path: 'registration', component: RegistrationComponent },
   { path: 'child', component: ChildComponent, canActivate: [LoggedInGuard]},
-  { path: 'timeline', component: TimelineComponent, canActivate: [LoggedInGuard] },
+  { path: 'timeline',
+    children: [
+      {path: '', component: TimelineComponent, canActivate: [LoggedInGuard]},
+      {path: ':id', component: EventcardPostComponent, canActivate: [LoggedInGuard]},
+      {path: ':id/edit', component: EventcardPostComponent, canActivate: [LoggedInGuard]},
+      ]
+  },
   { path: 'basket', component: BasketComponent, canActivate: [LoggedInGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [LoggedInGuard] },
   { path: 'multimedia', component: MultimediaComponent, canActivate: [LoggedInGuard] },

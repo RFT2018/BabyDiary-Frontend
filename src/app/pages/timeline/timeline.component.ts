@@ -7,16 +7,17 @@ import {EventService} from '../../shared/service/event.service';
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent implements OnInit {
-  public events: EventModel[];
+export class TimelineComponent {
+  events: EventModel[];
   newEventHide = true;
-  newEventButtomText = 'Új esemény';
+  newEventButtomText: string;
 
   constructor(private _eventService: EventService) {
+    this.loadEvents();
   }
 
-  loadData() {
-    this.events = this._eventService.getAllEvents();
+  loadEvents() {
+    this.events = this._eventService.events;
   }
 
   bodyDivShow() {
@@ -27,10 +28,6 @@ export class TimelineComponent implements OnInit {
       this.newEventHide = true;
       this.newEventButtomText = 'Új esemény';
     }
-    this.loadData();
-  }
-
-  ngOnInit(): void {
-    this.loadData();
+    this.loadEvents();
   }
 }
