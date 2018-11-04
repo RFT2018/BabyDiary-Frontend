@@ -15,6 +15,7 @@
 .login-card{
   color: #fff;
   background-color: rgba(36, 89, 133, 0.8);
+  min-width: 450px;
 }
 
 .login-card a{
@@ -22,6 +23,7 @@
 }
 
 .login-card-header{
+  display: inline-flex;
   letter-spacing: 3px;
   font-size: 1.2rem;
   font-weight: 600;
@@ -29,13 +31,19 @@
   background: rgba(38, 70, 97, 0.8);
 }
 
-.login-card .form-control{
+.form-control{
+  color: #fff;
   background: rgba(42, 47, 51, .4);
   border-color: transparent;
+  position: absolute;
+  right: 0px;
+  margin: 0px 20px;
+  width: 55%;
+  display: inline-flex;
 }
 
 .login-card .form-control:focus{
-  color: #eff0f7;
+  color: #fff;
   background: rgba(42, 47, 51, .8);
   border-color: #3384AA;
   outline: none;
@@ -43,6 +51,6 @@
 }
 
 .login-card .form-control::placeholder{
-  color: #d6d7de;
+  color: #93949b;
   opacity: 1;
 }

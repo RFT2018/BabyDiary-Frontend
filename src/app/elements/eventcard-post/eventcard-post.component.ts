@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {EventService} from '../../shared/service/event.service';
 import {EventModel} from '../../shared/model/event-model';
-import {TimelineComponent} from '../../pages/timeline/timeline.component';
 import {AlertComponent} from 'ngx-bootstrap';
 
 @Component({
@@ -14,10 +13,9 @@ export class EventcardPostComponent {
   alerts: any[] = [];
   private _eventDate = new Date();
   eventDateString = this._eventDate.getFullYear().toString() + '-'
-    + this.addZero(this._eventDate.getMonth()).toString() + '-'
-    + this.addZero(this._eventDate.getDay()).toString() + 'T'
-    + this.addZero(this._eventDate.getHours()).toString() + ':'
-    + this.addZero(this._eventDate.getMinutes()).toString();
+    + addZero(this._eventDate.getDay()).toString() + 'T'
+    + addZero(this._eventDate.getHours()).toString() + ':'
+    + addZero(this._eventDate.getMinutes()).toString();
   eventMaxId = 10;
 
   constructor(private _eventService: EventService) { }
@@ -67,14 +65,14 @@ export class EventcardPostComponent {
     }
   }
 
-  private addZero(i) {
-    if (i < 10) {
-      i = '0' + i;
-    }
-    return i;
-  }
-
   onClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }
+}
+
+function addZero(i) {
+  if (i < 10) {
+    i = '0' + i;
+  }
+  return i;
 }

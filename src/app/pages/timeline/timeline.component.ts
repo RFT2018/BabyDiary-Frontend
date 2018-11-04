@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EventModel} from '../../shared/model/event-model';
 import {EventService} from '../../shared/service/event.service';
 
@@ -7,13 +7,12 @@ import {EventService} from '../../shared/service/event.service';
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent {
+export class TimelineComponent implements OnInit {
   public events: EventModel[];
   newEventHide = true;
   newEventButtomText = 'Új esemény';
 
   constructor(private _eventService: EventService) {
-    this.loadData();
   }
 
   loadData() {
@@ -28,6 +27,10 @@ export class TimelineComponent {
       this.newEventHide = true;
       this.newEventButtomText = 'Új esemény';
     }
+    this.loadData();
+  }
+
+  ngOnInit(): void {
     this.loadData();
   }
 }
