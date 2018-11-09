@@ -24,6 +24,7 @@ import { EventService } from './shared/service/event.service';
 import { EventcardComponent } from './elements/eventcard/eventcard.component';
 import {UserService} from './shared/service/user.service';
 import {LoggedInGuard} from './shared/logged-in.guard';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import {LoggedInGuard} from './shared/logged-in.guard';
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    Angular2FontawesomeModule
   ],
   exports: [ ],
   declarations: [

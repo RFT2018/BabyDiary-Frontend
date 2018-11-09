@@ -5,7 +5,9 @@
      [style.background-position]="'center'"
      [style.background-size]="'cover'"></div>
 <div class="cd-timeline-content">
-  <div class="settingsImage32 mx-3" [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"></div>
+  <fa [name]="'pencil'"
+      [size]=2
+      [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"></fa>
   <h2>{{ esemeny.title }}</h2>
   <p>{{ esemeny.bodyText }}</p>
   <a [hidden]="!esemeny.bodyText" [routerLink]="['/timeline/' + esemeny.id + '/info' ]" class="cd-read-more">Bővebben</a>
