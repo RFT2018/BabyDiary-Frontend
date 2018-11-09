@@ -7,6 +7,8 @@ import {EventModel} from '../../shared/model/event-model';
   styleUrls: ['./eventcard.component.scss']
 })
 export class EventcardComponent {
+
+
   @Input() esemeny: EventModel;
 
   constructor() { }

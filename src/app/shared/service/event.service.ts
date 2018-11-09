@@ -6,14 +6,19 @@ export class EventService implements OnInit {
   private _events: EventModel[];
 
   constructor() {
-    this._events = EventModel.examplesEvents;
+    this._events = EventModel.examplesEvents
+      .sort((a: EventModel, b: EventModel) => {
+      return b.dateTime.valueOf() - a.dateTime.valueOf();
+    });
   }
 
   set event(value: EventModel) {
     this._events = [
       value,
       ...this._events
-    ];
+    ].sort((a: EventModel, b: EventModel) => {
+      return b.dateTime.valueOf() - a.dateTime.valueOf();
+    });
   }
 
   set modEvent(value: EventModel) {
@@ -21,7 +26,9 @@ export class EventService implements OnInit {
     this._events = [
       value,
       ...eventAll
-    ];
+    ].sort((a: EventModel, b: EventModel) => {
+      return b.dateTime.valueOf() - a.dateTime.valueOf();
+    });
   }
 
   eventById(id: number): EventModel {
@@ -34,5 +41,15 @@ export class EventService implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  sort() {
+    this._events
+      .sort((a: EventModel, b: EventModel) => {
+        return a.dateTime.valueOf() - b.dateTime.valueOf();
+      })
+      .sort((a: EventModel, b: EventModel) => {
+        return a.title === b.title ? 0 : (a.title ? 1 : -1);
+      });
   }
 }
