@@ -18,13 +18,13 @@ import { RecipeComponent } from './pages/relaxation/recipe/recipe.component';
 import { DocComponent } from './pages/relaxation/doc/doc.component';
 import { ChildDevComponent } from './pages/relaxation/childdevelopment/child-dev.component';
 import { AboutsComponent } from './pages/aboutus/abouts.component';
-import {AlertModule, BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
+import { AlertModule, BsDropdownModule, CollapseModule } from 'ngx-bootstrap';
 import { EventcardPostComponent } from './elements/eventcard-post/eventcard-post.component';
 import { EventService } from './shared/service/event.service';
 import { EventcardComponent } from './elements/eventcard/eventcard.component';
-import {UserService} from './shared/service/user.service';
-import {LoggedInGuard} from './shared/logged-in.guard';
-import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import { UserService } from './shared/service/user.service';
+import { LoggedInGuard } from './shared/logged-in.guard';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 
 @NgModule({
   imports: [

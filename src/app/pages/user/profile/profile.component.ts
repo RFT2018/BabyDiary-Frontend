@@ -11,98 +11,15 @@ import {UserService} from '../../../shared/service/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  private _id: number;
-  private _email: string;
-  private _password: string;
-  private _nickName: string;
-  private _userRole: UserRole;
-  private _firstName: string;
-  private _lastName: string;
-  private _sex: Sex;
-  private _dateTime: Date;
 
   constructor(private _userService: UserService) {
-    if (this._userService.isLoggedIn) {
-      this._id = _userService.user.id;
-      this._email = _userService.user.email;
-      this._nickName = _userService.user.nickName;
-      this._userRole = _userService.user.userRole;
-      this._firstName = _userService.user.firstName;
-      this._lastName = _userService.user.lastName;
-      this._sex = _userService.user.sex;
-      this._dateTime = _userService.user.dateTime;
-    }
   }
 
-  get id(): number {
-    return this._id;
+  get userService(): UserService {
+    return this._userService;
   }
 
-  set id(value: number) {
-    this._id = value;
-  }
-
-  get email(): string {
-    return this._email;
-  }
-
-  set email(value: string) {
-    this._email = value;
-  }
-
-  get password(): string {
-    return this._password;
-  }
-
-  set password(value: string) {
-    this._password = value;
-  }
-
-  get nickName(): string {
-    return this._nickName;
-  }
-
-  set nickName(value: string) {
-    this._nickName = value;
-  }
-
-  get userRole(): UserRole {
-    return this._userRole;
-  }
-
-  set userRole(value: UserRole) {
-    this._userRole = value;
-  }
-
-  get firstName(): string {
-    return this._firstName;
-  }
-
-  set firstName(value: string) {
-    this._firstName = value;
-  }
-
-  get lastName(): string {
-    return this._lastName;
-  }
-
-  set lastName(value: string) {
-    this._lastName = value;
-  }
-
-  get sex(): Sex {
-    return this._sex;
-  }
-
-  set sex(value: Sex) {
-    this._sex = value;
-  }
-
-  get dateTime(): Date {
-    return this._dateTime;
-  }
-
-  set dateTime(value: Date) {
-    this._dateTime = value;
+  onSubmit(form) {
+    console.log(form);
   }
 }
