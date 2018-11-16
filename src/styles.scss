@@ -43,16 +43,9 @@ button {
 }
 
 
-
-
-
-
-
-
-
-
-
-
+.modal-backdrop {
+  display:none;
+}
 
 .cd-nugget-info {
   text-align: center;
@@ -107,7 +100,6 @@ header h1 {
   }
 }
 .cd-timeline-block {
-  position: relative;
   margin: 2em 0;
 }
 .cd-timeline-block:after {

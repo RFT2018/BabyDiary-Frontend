@@ -8,8 +8,27 @@
   <fa [name]="'pencil'"
       [size]=2
       [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"></fa>
-  <h2>{{ esemeny.title }}</h2>
-  <p>{{ esemeny.bodyText }}</p>
-  <a [hidden]="!esemeny.bodyText" [routerLink]="['/timeline/' + esemeny.id + '/info' ]" class="cd-read-more">Bővebben</a>
+  <h2>{{ smallTitleText(esemeny) }}</h2>
+  <p>{{ smallBodyText(esemeny) }}</p>
+  <button type="button" class="btn btn-outline-info"
+          [hidden]="!esemeny.bodyText"
+          (click)="showChildModal()">Bővebben</button>
   <span [hidden]="!esemeny.dateTime" class="cd-date">{{ esemeny.dateTime | date:'yy.MMM.dd. HH:mm' }}</span>
+  <div bsModal #childModal="bs-modal" class="modal fade"
+       role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="dialog-child-name" class="modal-title pull-left">{{ esemeny.title }}</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ esemeny.bodyText }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

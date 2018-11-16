@@ -10,7 +10,7 @@
                    class="form-control"
                    id="exampleInputEmail"
                    placeholder="Email cím"
-                   [(ngModel)]="userService.user.email"
+                   [ngModel]="userService.user.email"
                    name="email">
           </div>
           <div class="form-group">
@@ -18,14 +18,16 @@
             <input type="password"
                    class="form-control"
                    id="exampleInputPassword"
-                   placeholder="Jelszó">
+                   placeholder="Jelszó"
+                   [ngModel]="userService.user.password"
+                   name="password">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail">Megszólítás</label>
             <input type="text"
                    class="form-control"
                    placeholder="Felhasználó"
-                   [(ngModel)]="userService.user.nickName"
+                   [ngModel]="userService.user.nickName"
                    name="nickName">
           </div>
           <div class="form-group">
@@ -33,7 +35,7 @@
             <input type="text"
                    class="form-control"
                    placeholder="Keresztnév"
-                   [(ngModel)]="userService.user.firstName"
+                   [ngModel]="userService.user.firstName"
                    name="firstName">
           </div>
           <div class="form-group">

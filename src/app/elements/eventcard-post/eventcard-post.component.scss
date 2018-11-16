@@ -40,13 +40,13 @@ textarea{
 }
 
 .login-card .form-control{
-  background: rgba(42, 47, 51, .4);
+  background: rgba(42, 47, 51, 0.4);
   border-color: transparent;
 }
 
 .login-card .form-control:focus{
   color: #eff0f7;
-  background: rgba(42, 47, 51, .8);
+  background: rgba(42, 47, 51, 0.8);
   border-color: #3384AA;
   outline: none;
   box-shadow:none;
