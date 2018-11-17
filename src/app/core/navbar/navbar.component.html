@@ -17,22 +17,19 @@
          class="collapse navbar-collapse"
          [collapse]=isCollapsedMasterMenu>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item px-2">
-          <a class="nav-link"
-             routerLink={{routing.childLink}}>Gyermek</a>
+        <li class="nav-item px-2" routerLinkActive="active">
+          <a class="nav-link"routerLink={{routing.childLink}}>Gyermek</a>
         </li>
-        <li class="nav-item active px-1">
-          <a class="nav-link"
-             routerLink={{routing.timelineLink}}>Idővonal</a>
+        <li class="nav-item px-1" routerLinkActive="active">
+          <a class="nav-link" routerLink={{routing.timelineLink}}>Idővonal</a>
         </li>
-        <li class="nav-item px-1">
-          <a class="nav-link"
-             routerLink={{routing.basketLink}}>Kívánságlista</a>
+        <li class="nav-item px-1" routerLinkActive="active">
+          <a class="nav-link" routerLink={{routing.basketLink}}>Kívánságlista</a>
         </li>
         <li class="nav-item px-1">
         </li>
 
-        <li class="nav-item dropdown mr-1 ml-1">
+        <li class="nav-item dropdown mr-1 ml-1" routerLinkActive="active">
           <a class="nav-link dropdown-toggle btn-group nowrap"
              role="button"
              (mouseover)="isCollapsedMasterSec = 1"
@@ -58,7 +55,7 @@
           </div>
         </li>
 
-        <li class="nav-item dropdown mr-1 ml-1">
+        <li class="nav-item dropdown mr-1 ml-1" routerLinkActive="active">
           <a (mouseover)="isCollapsedMasterSec = 2"
              (click)="isCollapsedMasterSec = isCollapsedMasterSec == 2 ? 0 : 2"
              class="nav-link dropdown-toggle btn-group nowrap"

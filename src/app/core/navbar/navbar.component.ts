@@ -12,7 +12,8 @@ export class NavbarComponent {
   isCollapsedMasterSec = 0;
   routing = RoutingService.appRoutingModule;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
 
   logOut() {
     this.userService.logOut();

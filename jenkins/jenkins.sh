@@ -24,7 +24,7 @@ echo -e "\n###\n###\t The new '$PROJECT_NAME' local image constructed \n###\n"
 sudo docker rm -f $PROJECT_NAME
 echo -e "\n###\n###\t The earlier '$PROJECT_NAME' repository deleted \n###\n"
 
-sudo docker run -d --restart always --name $PROJECT_NAME -v /docker/$PROJECT_NAME:/usr/src/app/temp -p 80:4200 noway0032/$PROJECT_NAME:latest
+sudo docker run -d --restart always --name $PROJECT_NAME -v /docker/$PROJECT_NAME:/usr/src/assets/temporary -p 80:4200 noway0032/$PROJECT_NAME:latest
 echo -e "\n###\n###\t The new '$PROJECT_NAME' local repo started \n###\n"
 
 sudo rm -rf *

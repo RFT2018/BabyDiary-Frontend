@@ -13,5 +13,6 @@ export class ProfileComponent {
   }
   onSubmit(form) {
     console.log('mod');
+    this._userService.updateDb();
   }
 }

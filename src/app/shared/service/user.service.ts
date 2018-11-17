@@ -72,4 +72,10 @@ export class UserService {
     um.dateTime = new Date('2018-04-01T20:15');
     return um;
   }
+
+  updateDb() {
+    /**
+     * Ide jön a módosított lokális adatok feltöltése az online adatbázisba.
+     */
+  }
 }
