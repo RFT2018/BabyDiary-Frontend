@@ -16,11 +16,8 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.child-box {
-  overflow:scroll;
-  height: 100%;
-}
 .profile-box {
+  min-width: 300px;
   position: relative;
   //display: inline-block;
   margin: 2em;

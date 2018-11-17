@@ -54,3 +54,13 @@
   color: #93949b;
   opacity: 1;
 }
+
+fa {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 1;
+}
+fa:hover{
+  right: 20px;
+}

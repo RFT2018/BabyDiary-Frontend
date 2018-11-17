@@ -2,6 +2,9 @@
   <div class="row my-auto">
     <div class="col-6 mx-auto">
       <div class="card login-card mb-3">
+        <fa [name]="'angle-double-left'"
+            [size]=2
+            [routerLink]="['/login' ]"></fa>
         <div class="card-header login-card-header text-uppercase">Regisztráció</div>
         <div class="card-body">
           <div *ngFor="let alert of alerts">

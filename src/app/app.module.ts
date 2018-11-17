@@ -25,6 +25,7 @@ import { EventcardComponent } from './elements/eventcard/eventcard.component';
 import { UserService } from './shared/service/user.service';
 import { LoggedInGuard } from './shared/logged-in.guard';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
+import { KidcardComponent } from './elements/kidcard/kidcard.component';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome';
     ChildDevComponent,
     AboutsComponent,
     EventcardComponent,
-    EventcardPostComponent
+    EventcardPostComponent,
+    KidcardComponent
   ],
   providers: [
     EventService,

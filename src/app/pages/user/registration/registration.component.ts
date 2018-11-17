@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {UserService} from '../../../shared/service/user.service';
 import {AlertComponent} from 'ngx-bootstrap';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +10,8 @@ import {AlertComponent} from 'ngx-bootstrap';
 })
 export class RegistrationComponent {
   alerts: any[] = [];
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService,
+              private _location: Location) { }
 
   register(email: string,
            password: string,
@@ -44,5 +46,9 @@ export class RegistrationComponent {
 
   onClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+  }
+
+  backNavi() {
+    this._location.back();
   }
 }

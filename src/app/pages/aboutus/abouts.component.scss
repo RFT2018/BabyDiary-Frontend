@@ -26,3 +26,12 @@
   color: #eff0f7;
   background: rgba(38, 70, 97, 0.8);
 }
+fa {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 1;
+}
+fa:hover{
+  right: 20px;
+}

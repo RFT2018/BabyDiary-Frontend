@@ -1,0 +1,42 @@
+<div class="col-sm-12 col-md-6 col-lg-4">
+  <div class="profile-box small">
+        <span class="profile-btn-contact"
+              title="edit">
+          <fa [name]="'pencil'" [size]=1></fa>
+        </span>
+    <figure class="profile-header">
+      <div class="profile-img"
+           [style.background]="'#75ce66'"
+           [style.background]="'url(' + kinderPicture(kid) + ')'"
+           [style.background-repeat]="'no-repeat'"
+           [style.background-position]="'center'"
+           [style.background-size]="'cover'">
+      </div>
+      <figcaption class="profile-name">{{ kid.name }}</figcaption>
+    </figure>
+    <p class="profile-detail">
+      <span class="profile-label">Születési idő:</span>
+      <span class="profile-value">
+            {{ kid.birthday | date:'yyyy.MM.dd @ HH:mm' }}
+          </span>
+    </p>
+    <p class="profile-detail">
+      <span class="profile-label">Nem:</span>
+      <span class="profile-value">
+            {{ kid.sex }}
+          </span>
+    </p>
+    <p class="profile-detail">
+      <span class="profile-label">Magasság (mm):</span>
+      <span class="profile-value">{{ kid.height }}</span>
+    </p>
+    <p class="profile-detail">
+      <span class="profile-label">weight:</span>
+      <span class="profile-value">{{ kid.weight }}</span>
+    </p>
+    <p class="profile-detail">
+      <span class="profile-label">conception:</span>
+      <span class="profile-value">{{ kid.conception }}</span>
+    </p>
+  </div>
+</div>
