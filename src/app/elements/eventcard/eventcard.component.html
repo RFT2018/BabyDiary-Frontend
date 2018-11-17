@@ -10,7 +10,7 @@
       [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"></fa>
   <h2>{{ smallTitleText(esemeny) }}</h2>
   <p>{{ smallBodyText(esemeny) }}</p>
-  <button type="button" class="btn btn-outline-info"
+  <button type="button" class="btn btn-outline-info ml-auto"
           [hidden]="!esemeny.bodyText"
           (click)="showChildModal()">Bővebben</button>
   <span [hidden]="!esemeny.dateTime" class="cd-date">{{ esemeny.dateTime | date:'yy.MMM.dd. HH:mm' }}</span>
