@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {KidModel} from '../../shared/model/kid-model';
 import {KidService} from '../../shared/service/kid.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-child',
@@ -9,6 +10,7 @@ import {KidService} from '../../shared/service/kid.service';
 })
 export class ChildComponent implements OnInit {
   kids: KidModel[];
+  kids$: Observable<KidModel[]>;
 
   constructor(private _kidService: KidService) {
     this.loadKids();
@@ -19,6 +21,7 @@ export class ChildComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.kids$ = this._kidService.getAllKidByFirebaseio();
   }
 
 }

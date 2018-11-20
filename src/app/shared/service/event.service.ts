@@ -1,8 +1,11 @@
 import {Injectable, OnInit} from '@angular/core';
 import {EventModel} from '../model/event-model';
 import {KidService} from './kid.service';
-import {KidModel} from '../model/kid-model';
 import {Router} from '@angular/router';
+import {environment} from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class EventService implements OnInit {
@@ -10,8 +13,16 @@ export class EventService implements OnInit {
   private _events: EventModel[];
 
   constructor(private _router: Router,
-              private _kidService: KidService) {
+              private _kidService: KidService,
+              private _http: HttpClient) {
     this.sortEvents();
+  }
+
+  getAllEventByFirebaseio(): Observable<EventModel[]> {
+    return this._http.get<EventModel[]>(`${environment.firebase.baseUrl}/event.json`)
+      .pipe(
+        map(data => Object.values(data))
+      );
   }
 
   sortEvents(): void {

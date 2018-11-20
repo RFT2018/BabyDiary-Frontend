@@ -14,5 +14,10 @@
       *ngFor="let ec of events"
       [esemeny]="ec">
     </app-eventcard>
+    <app-eventcard
+      class="cd-timeline-block"
+      *ngFor="let ec of events$ | async"
+      [esemeny]="ec">
+    </app-eventcard>
   </section>
 </div>

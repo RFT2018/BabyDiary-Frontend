@@ -22,7 +22,7 @@
                       name="id"
                       [ngModel]="actualEvent.kinder.id">
                 <option selected hidden disabled value="0">Válassz egy gyermeket!</option>
-                <option *ngFor="let kinder of kiders" [value]="kinder.id">
+                <option *ngFor="let kinder of kids$ | async" [value]="kinder.id">
                   {{ kinder.name}}
                 </option>
               </select>

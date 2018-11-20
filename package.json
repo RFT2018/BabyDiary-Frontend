@@ -29,6 +29,7 @@
     "lass": "^1.0.9",
     "ngx-bootstrap": "^3.0.1",
     "popper.js": "^1.14.4",
+    "rxjs": "^6.3.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

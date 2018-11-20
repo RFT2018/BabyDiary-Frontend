@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {KidService} from '../../shared/service/kid.service';
 import {KidModel} from '../../shared/model/kid-model';
 import {EventModel} from '../../shared/model/event-model';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-timeline-post',
@@ -16,13 +17,14 @@ export class EventcardPostComponent implements OnInit {
   idURL: string;
   alerts: any[] = [];
   private _actualEvent: EventModel;
+  kids$: Observable<KidModel[]>
 
   constructor(private _route: ActivatedRoute,
               private _router: Router,
               private _eventService: EventService,
               private _kidService: KidService) {
     this.idURL = this._route.snapshot.params['id'];
-    // this.actualEvent = this._eventService.emtyEvent;
+    console.log(_kidService.emtyKid);
     if (this.idURL === '0') {
       this.actualEvent = this._eventService.emtyEvent;
       this.actualEvent.id = _eventService.maxEventId + 1;
@@ -101,6 +103,7 @@ export class EventcardPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.kids$ = this._kidService.getAllKidByFirebaseio();
   }
 }
 

@@ -1,17 +1,28 @@
-import { Injectable } from '@angular/core';
-import {KidModel} from '../model/kid-model';
-import {Sex} from '../enum/sex.enum';
+import {Injectable, OnInit} from '@angular/core';
+import { KidModel } from '../model/kid-model';
+import { Sex } from '../enum/sex.enum';
+import { HttpClient } from '@angular/common/http';;
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class KidService {
+export class KidService implements OnInit {
   private _date: Date;
   private _kids: KidModel[];
 
-  constructor() {
+  constructor(private _http: HttpClient) {
     this._date = new Date();
     this._kids = [this.emtyKid];
+  }
+
+  getAllKidByFirebaseio(): Observable<KidModel[]> {
+    return this._http.get<KidModel[]>(`${environment.firebase.baseUrl}/kid.json`)
+      .pipe(
+        map(data => Object.values(data))
+      );
   }
 
   kidById(id: number): KidModel {
@@ -53,5 +64,8 @@ export class KidService {
     km.conception = '0';
     km.picture = 'ed8bd06e-8034-4163-a9d5-7b589565c100.png';
     return km;
+  }
+
+  ngOnInit(): void {
   }
 }

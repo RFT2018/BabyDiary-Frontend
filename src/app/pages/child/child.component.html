@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <app-kidcard
         class=""
-        *ngFor="let kc of kids"
+        *ngFor="let kc of kids$ | async"
         [kid]="kc">
       </app-kidcard>
     </div>

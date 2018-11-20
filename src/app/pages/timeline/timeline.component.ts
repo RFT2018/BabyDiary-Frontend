@@ -1,15 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EventModel} from '../../shared/model/event-model';
 import {EventService} from '../../shared/service/event.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent {
+export class TimelineComponent implements OnInit {
   events: EventModel[];
+  events$: Observable<EventModel[]>;
   newEventButtomText: string;
   idURL = this._route.snapshot.params['id'];
 
@@ -34,5 +36,9 @@ export class TimelineComponent {
     } else {
       this._router.navigate(['/timeline/0/edit'] );
     }
+  }
+
+  ngOnInit(): void {
+    this.events$ = this._eventService.getAllEventByFirebaseio();
   }
 }

@@ -18,7 +18,7 @@ import { RecipeComponent } from './pages/relaxation/recipe/recipe.component';
 import { DocComponent } from './pages/relaxation/doc/doc.component';
 import { ChildDevComponent } from './pages/relaxation/childdevelopment/child-dev.component';
 import { AboutsComponent } from './pages/aboutus/abouts.component';
-import {AlertModule, BsDropdownModule, CollapseModule, ModalModule} from 'ngx-bootstrap';
+import { AlertModule, BsDropdownModule, CollapseModule, ModalModule } from 'ngx-bootstrap';
 import { EventcardPostComponent } from './elements/eventcard-post/eventcard-post.component';
 import { EventService } from './shared/service/event.service';
 import { EventcardComponent } from './elements/eventcard/eventcard.component';
@@ -26,8 +26,9 @@ import { UserService } from './shared/service/user.service';
 import { LoggedInGuard } from './shared/logged-in.guard';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { KidcardComponent } from './elements/kidcard/kidcard.component';
-import {KidService} from './shared/service/kid.service';
-import {RoutingService} from './shared/service/routing.service';
+import { KidService} from './shared/service/kid.service';
+import { RoutingService } from './shared/service/routing.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import {RoutingService} from './shared/service/routing.service';
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
     AppRoutingModule,
-    Angular2FontawesomeModule
+    Angular2FontawesomeModule,
+    HttpClientModule
   ],
   exports: [ ],
   declarations: [
@@ -71,7 +73,8 @@ import {RoutingService} from './shared/service/routing.service';
     LoggedInGuard
   ],
   bootstrap: [
-    AppComponent]
+    AppComponent
+  ]
 })
 export class AppModule {
   constructor() {
