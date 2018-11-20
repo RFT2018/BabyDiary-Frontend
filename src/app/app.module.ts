@@ -26,6 +26,8 @@ import { UserService } from './shared/service/user.service';
 import { LoggedInGuard } from './shared/logged-in.guard';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { KidcardComponent } from './elements/kidcard/kidcard.component';
+import {KidService} from './shared/service/kid.service';
+import {RoutingService} from './shared/service/routing.service';
 
 @NgModule({
   imports: [
@@ -64,6 +66,8 @@ import { KidcardComponent } from './elements/kidcard/kidcard.component';
   providers: [
     EventService,
     UserService,
+    KidService,
+    RoutingService,
     LoggedInGuard
   ],
   bootstrap: [

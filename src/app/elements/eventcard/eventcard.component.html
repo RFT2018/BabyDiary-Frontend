@@ -1,20 +1,27 @@
 <div class="cd-timeline-img cd-picture"
      [style.background]="'#75ce66'"
-     [style.background]="'url(' + kinderPicture(esemeny.kinderId) + ')'"
+     [style.background]="'url(' + kinderPicture(esemeny.kinder.picture) + ')'"
      [style.background-repeat]="'no-repeat'"
      [style.background-position]="'center'"
-     [style.background-size]="'cover'"></div>
+     [style.background-size]="'cover'"
+     [routerLink]="['/child' ]"></div>
 <div class="cd-timeline-content">
   <fa [name]="'pencil'"
       [size]=2
-      [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"></fa>
+      [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"
+      [hidden]="!esemeny.bodyText"></fa>
   <h2>{{ smallTitleText(esemeny) }}</h2>
   <p>{{ smallBodyText(esemeny) }}</p>
-  <button type="button" class="btn btn-outline-info ml-auto"
+  <button type="button"
+          class="btn btn-outline-info ml-auto"
           [hidden]="!esemeny.bodyText"
           (click)="showChildModal()">Bővebben</button>
-  <span [hidden]="!esemeny.dateTime" class="cd-date">{{ esemeny.dateTime | date:'yy.MMM.dd. HH:mm' }}</span>
-  <div bsModal #childModal="bs-modal" class="modal fade"
+  <span [hidden]="!esemeny.dateTime" class="cd-date">
+    {{ esemeny.dateTime | date:'yy.MMM.dd. HH:mm' }}
+  </span>
+  <div bsModal
+       #childModal="bs-modal"
+       class="modal fade"
        role="dialog" aria-labelledby="dialog-child-name">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">

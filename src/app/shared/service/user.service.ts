@@ -3,17 +3,19 @@ import {UserRole} from '../enum/user-role.enum';
 import {Router} from '@angular/router';
 import { Injectable } from '@angular/core';
 import {Sex} from '../enum/sex.enum';
+import {EventService} from './event.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private _user: UserModel;
   private _date: Date;
+  private _user: UserModel;
 
   private _isLoggedIn = false;
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router,
+              private _evrntsService: EventService) {
     this._date = new Date();
   }
 
@@ -21,6 +23,7 @@ export class UserService {
     if (email === 'asdf' && password === 'asdf') {
       this._user = this.getUserExamples;
       this._isLoggedIn = true;
+      this._evrntsService.loginEvent();
       this._router.navigate(['/profile'] );
     }
     return false;

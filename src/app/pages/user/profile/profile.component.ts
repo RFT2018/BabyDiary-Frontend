@@ -8,9 +8,11 @@ import {UserService} from '../../../shared/service/user.service';
 })
 export class ProfileComponent {
   constructor(private _userService: UserService) { }
+
   get userService(): UserService {
     return this._userService;
   }
+
   onSubmit(form) {
     console.log('mod');
     this._userService.updateDb();

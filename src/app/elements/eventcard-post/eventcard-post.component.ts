@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {EventService} from '../../shared/service/event.service';
-import {EventModel} from '../../shared/model/event-model';
 import {AlertComponent} from 'ngx-bootstrap';
-import {MONTH} from 'ngx-bootstrap/chronos/units/constants';
 import {ActivatedRoute, Router} from '@angular/router';
+import {KidService} from '../../shared/service/kid.service';
+import {KidModel} from '../../shared/model/kid-model';
+import {EventModel} from '../../shared/model/event-model';
 
 @Component({
   selector: 'app-timeline-post',
@@ -12,106 +13,73 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EventcardPostComponent implements OnInit {
 
-  constructor(private _eventService: EventService,
-              private _route: ActivatedRoute,
-              private _router: Router) {
-    this.onLoad();
-  }
-  idEvent: number;
-  kids = '';
-  eventTitle = '';
-  eventBody = '';
-  idURL = this._route.snapshot.params['id'];
+  idURL: string;
   alerts: any[] = [];
-  private _eventMaxId = 110;
-  eventDateString = '';
+  private _actualEvent: EventModel;
 
-  onLoad() {
-    const ev = this._eventService.eventById(+this.idURL);
-    const date = ev.dateTime.getFullYear().toString() + '-'
-      + addZero(ev.dateTime.getMonth() + 1).toString() + '-'
-      + addZero(ev.dateTime.getDate()).toString() + 'T'
-      + addZero(ev.dateTime.getHours()).toString() + ':'
-      + addZero(ev.dateTime.getMinutes()).toString();
-    this.idEvent = ev.id;
-    this.kids = ev.kinderId === 0 ? 'Válassz...' : ev.kinderId.toString();
-    this.eventTitle = ev.title;
-    this.eventBody = ev.bodyText;
-    this.eventDateString = date;
-  }
-
-  addEvent(kid: string,
-           newEventTitle: string,
-           newEventAlles: string,
-           newEventDate: string) {
-    if (!kid || !newEventTitle || !newEventAlles || !newEventDate) {
-      if (kid === 'Válassz...') {
-        this.alerts.push({
-          type: 'danger',
-          msg: `Kérlek, válaszd ki a gyermeket!`,
-          timeout: 5000
-        });
-      }
-      if (!newEventTitle) {
-        this.alerts.push({
-          type: 'danger',
-          msg: `Kérlek, add meg az esemény címét!`,
-          timeout: 5000
-        });
-      }
-      if (!newEventAlles) {
-        this.alerts.push({
-          type: 'danger',
-          msg: `Kérlek, add meg az esemény részletes leírását!`,
-          timeout: 5000
-        });
-      }
-      if (!newEventDate) {
-        this.alerts.push({
-          type: 'danger',
-          msg: `Kérlek, add meg az esemény időpontját!`,
-          timeout: 5000
-        });
-      }
+  constructor(private _route: ActivatedRoute,
+              private _router: Router,
+              private _eventService: EventService,
+              private _kidService: KidService) {
+    this.idURL = this._route.snapshot.params['id'];
+    // this.actualEvent = this._eventService.emtyEvent;
+    if (this.idURL === '0') {
+      this.actualEvent = this._eventService.emtyEvent;
+      this.actualEvent.id = _eventService.maxEventId + 1;
+      this.actualEvent.dateTime = new Date();
     } else {
-      this._eventService.event = {
-        id: this._eventMaxId,
-        kinderId: +kid,
-        title: newEventTitle,
-        bodyText: newEventAlles,
-        dateTime: new Date(newEventDate)
-      };
-      this._router.navigate(['/timeline'] );
+      this.actualEvent = this._eventService.eventById(+this.idURL);
     }
   }
 
-  modEvent(kid: string,
-           newEventTitle: string,
-           newEventAlles: string,
-           newEventDate: string) {
-    if (!kid || !newEventTitle || !newEventAlles || !newEventDate) {
-      if (kid === 'Válassz...') {
+  get actualEvent(): EventModel {
+    return this._actualEvent;
+  }
+
+  set actualEvent(value: EventModel) {
+    this._actualEvent = value;
+  }
+
+  get kiders(): KidModel[] {
+    return this._kidService.kids;
+  }
+
+  inputDateFormat(em: EventModel): string {
+    return em.dateTime.getFullYear().toString() + '-'
+      + addZero(em.dateTime.getMonth() + 1).toString() + '-'
+      + addZero(em.dateTime.getDate()).toString() + 'T'
+      + addZero(em.dateTime.getHours()).toString() + ':'
+      + addZero(em.dateTime.getMinutes()).toString();
+  }
+
+  selectKidId(em: EventModel): number {
+    return em.kinder.id;
+  }
+
+  onSubmit(form) {
+    if (!form.id || !form.title || !form.bodyText || !form.dateTime) {
+      if (form.id === 'Válassz...') {
         this.alerts.push({
           type: 'danger',
           msg: `Kérlek, válaszd ki a gyermeket!`,
           timeout: 5000
         });
       }
-      if (!newEventTitle) {
+      if (!form.title) {
         this.alerts.push({
           type: 'danger',
           msg: `Kérlek, add meg az esemény címét!`,
           timeout: 5000
         });
       }
-      if (!newEventAlles) {
+      if (!form.bodyText) {
         this.alerts.push({
           type: 'danger',
           msg: `Kérlek, add meg az esemény részletes leírását!`,
           timeout: 5000
         });
       }
-      if (!newEventDate) {
+      if (!form.dateTime) {
         this.alerts.push({
           type: 'danger',
           msg: `Kérlek, add meg az esemény időpontját!`,
@@ -119,13 +87,11 @@ export class EventcardPostComponent implements OnInit {
         });
       }
     } else {
-      this._eventService.modEvent = {
-        id: this.idEvent,
-        kinderId: +kid,
-        title: newEventTitle,
-        bodyText: newEventAlles,
-        dateTime: new Date(newEventDate)
-      };
+      if (this.idURL === '0') {
+        this._eventService.addEventByTag(this._eventService.maxEventId + 1, form.id, form.title, form.bodyText, form.dateTime);
+      } else {
+        this._eventService.setEventByTag(+this.idURL, form.id, form.title, form.bodyText, form.dateTime);
+      }
       this._router.navigate(['/timeline'] );
     }
   }

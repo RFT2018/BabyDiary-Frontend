@@ -13,9 +13,9 @@ export class TimelineComponent {
   newEventButtomText: string;
   idURL = this._route.snapshot.params['id'];
 
-  constructor(private _eventService: EventService,
-              private _route: ActivatedRoute,
-              private _router: Router) {
+  constructor(private _route: ActivatedRoute,
+              private _router: Router,
+              private _eventService: EventService) {
     this.loadEvents();
   }
 
