@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {KidModel} from '../../shared/model/kid-model';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-kidcard',
@@ -8,10 +9,31 @@ import {KidModel} from '../../shared/model/kid-model';
 })
 export class KidcardComponent implements OnInit {
   @Input() kid: KidModel;
+  form: FormGroup;
+  ronly = true;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {
+  onSubmit() {
+    console.log(this.form.value);
+    this.edit();
+  }
+
+  edit(): void {
+    this.ronly = this.ronly === false ? true : false;
+  }
+
+  ngOnInit(): void {
+    this.form = this.fb.group(
+      {
+        name: null,
+        birthday: null,
+        sex: null,
+        height: null,
+        weight: null,
+        conception: null
+      }
+    );
   }
 
   kinderPicture(kid: KidModel): string {

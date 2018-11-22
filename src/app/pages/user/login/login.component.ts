@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {UserService} from '../../../shared/service/user.service';
-import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
+import {AlertComponent} from 'ngx-bootstrap/alert/alert.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,11 @@ export class LoginComponent {
 
   alerts: any[] = [];
 
-  constructor(private _users: UserService) {
+  constructor(private _users: UserService,
+              private _router: Router) {
+    if (_users.isLoggedIn) {
+      this._router.navigate(['/profile']);
+    }
   }
 
   login(email: string, password: string) {

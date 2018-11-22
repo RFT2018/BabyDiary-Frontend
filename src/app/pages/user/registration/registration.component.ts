@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {UserService} from '../../../shared/service/user.service';
 import {AlertComponent} from 'ngx-bootstrap';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,11 @@ import {Location} from '@angular/common';
 export class RegistrationComponent {
   alerts: any[] = [];
   constructor(private _userService: UserService,
-              private _location: Location) { }
+              private _location: Location,
+              private _router: Router) {
+    if (_userService.isLoggedIn) {
+      this._router.navigate(['/profile']);
+    }}
 
   register(email: string,
            password: string,

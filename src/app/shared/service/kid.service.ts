@@ -1,10 +1,10 @@
 import {Injectable, OnInit} from '@angular/core';
-import { KidModel } from '../model/kid-model';
-import { Sex } from '../enum/sex.enum';
-import { HttpClient } from '@angular/common/http';;
-import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {KidModel} from '../model/kid-model';
+import {Sex} from '../enum/sex.enum';
+import {HttpClient} from '@angular/common/http';;
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

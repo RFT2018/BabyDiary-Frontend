@@ -9,19 +9,21 @@ import {Observable} from 'rxjs';
   styleUrls: ['./child.component.scss']
 })
 export class ChildComponent implements OnInit {
-  kids: KidModel[];
-  kids$: Observable<KidModel[]>;
+  newKid: KidModel[];
+  onlineKids: KidModel[];
 
   constructor(private _kidService: KidService) {
     this.loadKids();
   }
 
   loadKids() {
-    this.kids = this._kidService.kids;
+    this.newKid = this._kidService.kids;
   }
 
   ngOnInit() {
-    this.kids$ = this._kidService.getAllKidByFirebaseio();
+    this._kidService.getAllKidByFirebaseio().subscribe(data => {
+      this.onlineKids = data;
+    });
   }
 
 }

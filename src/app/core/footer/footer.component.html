@@ -1,8 +1,7 @@
-<script src="../../pages/user/registration/registration.component.ts"></script>
 <footer class="footer">
   <div class="container">
     <span class="text-muted">
-      {{getDate() | date:'yyyy.MM.dd @ HH:mm'}}
+      {{getDate | amDateFormat: 'LLL'}}
     </span>
   </div>
 </footer>

@@ -3,6 +3,7 @@ import {EventModel} from '../../shared/model/event-model';
 import {EventService} from '../../shared/service/event.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
+import {KidModel} from '../../shared/model/kid-model';
 
 @Component({
   selector: 'app-timeline',

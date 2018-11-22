@@ -1,13 +1,15 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {EventModel} from '../../shared/model/event-model';
 import {ModalDirective} from 'ngx-bootstrap';
+import {KidModel} from '../../shared/model/kid-model';
+import {KidService} from '../../shared/service/kid.service';
 
 @Component({
   selector: 'app-eventcard',
   templateUrl: './eventcard.component.html',
   styleUrls: ['./eventcard.component.scss']
 })
-export class EventcardComponent {
+export class EventcardComponent implements OnInit {
 
   @ViewChild('childModal') childModal: ModalDirective;
   @Input() esemeny: EventModel;
@@ -29,5 +31,8 @@ export class EventcardComponent {
   }
   kinderPicture(id: string): string {
     return './assets/temporary/pictures/kids/' + id;
+  }
+
+  ngOnInit(): void {
   }
 }

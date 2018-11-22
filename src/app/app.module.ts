@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { ProfileComponent } from './pages/user/profile/profile.component';
@@ -29,6 +29,9 @@ import { KidcardComponent } from './elements/kidcard/kidcard.component';
 import { KidService} from './shared/service/kid.service';
 import { RoutingService } from './shared/service/routing.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MomentModule } from 'angular2-moment';
+import 'moment/locale/hu';
+import {TagInputModule} from 'ngx-chips';
 
 @NgModule({
   imports: [
@@ -40,7 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
     AlertModule.forRoot(),
     AppRoutingModule,
     Angular2FontawesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    MomentModule,
+    ReactiveFormsModule,
+    TagInputModule
   ],
   exports: [ ],
   declarations: [
@@ -51,7 +57,6 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     PageNotFoundComponent,
     FooterComponent,
-    LoginComponent,
     RegistrationComponent,
     ChildComponent,
     BasketComponent,
