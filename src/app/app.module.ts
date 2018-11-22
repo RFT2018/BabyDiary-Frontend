@@ -32,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MomentModule } from 'angular2-moment';
 import 'moment/locale/hu';
 import {TagInputModule} from 'ngx-chips';
+import { LoadingSpinnerComponent } from './core/loading-spinner/loading-spinner.component';
 
 @NgModule({
   imports: [
@@ -68,7 +69,8 @@ import {TagInputModule} from 'ngx-chips';
     AboutsComponent,
     EventcardComponent,
     EventcardPostComponent,
-    KidcardComponent
+    KidcardComponent,
+    LoadingSpinnerComponent
   ],
   providers: [
     EventService,

@@ -12,7 +12,7 @@ import {KidModel} from '../../shared/model/kid-model';
 })
 export class TimelineComponent implements OnInit {
   events: EventModel[];
-  events$: Observable<EventModel[]>;
+  onlineEvents: EventModel[];
   newEventButtomText: string;
   idURL = this._route.snapshot.params['id'];
 
@@ -40,6 +40,8 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.events$ = this._eventService.getAllEventByFirebaseio();
+    this._eventService.getAllEventByFirebaseio().subscribe(data => {
+      this.onlineEvents = data;
+    });
   }
 }
