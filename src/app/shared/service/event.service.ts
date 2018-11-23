@@ -25,6 +25,11 @@ export class EventService implements OnInit {
       );
   }
 
+  setEventByFirebaseio(event: EventModel) {
+    return this._http.put(`${environment.firebase.baseUrl}/event.json`, event);
+  }
+
+
   sortEvents(): void {
     if (this._events != null) {
       this._events = this._events.sort((a: EventModel, b: EventModel) => {
@@ -48,6 +53,7 @@ export class EventService implements OnInit {
       value,
       ...this._events
     ];
+    this.setEventByFirebaseio(value);
   }
 
   addEventByTag(_id: number,
@@ -61,11 +67,13 @@ export class EventService implements OnInit {
     em.title = _title;
     em.bodyText = _bodyText;
     em.dateTime = new Date(_dateTime);
+    console.log('em kész');
+    console.log(em);
+    this.setEventByFirebaseio(em);
     this._events = [
       em,
       ...this._events
     ];
-    this.sortEvents();
   }
 
   setEventByTag(_id: number,

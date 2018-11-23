@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Pipe, PipeTransform} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +6,14 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+}
+
+@Pipe({
+  name: 'enumToArray'
+})
+export class EnumToArrayPipe implements PipeTransform {
+  transform(data: Object) {
+    const keys = Object.keys(data);
+    return keys.slice(keys.length / 2);
+  }
 }

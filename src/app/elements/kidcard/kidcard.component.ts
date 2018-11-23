@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {KidModel} from '../../shared/model/kid-model';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Sex} from '../../shared/enum/sex.enum';
 
 @Component({
   selector: 'app-kidcard',
@@ -11,8 +12,12 @@ export class KidcardComponent implements OnInit {
   @Input() kid: KidModel;
   form: FormGroup;
   ronly = true;
+  keys = Object.keys;
+  sexEnum = Sex;
 
-  constructor(private fb: FormBuilder) { }
+
+  constructor(private fb: FormBuilder) {
+  }
 
   onSubmit() {
     console.log(this.form.value);

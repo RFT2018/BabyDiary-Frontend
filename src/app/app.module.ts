@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+import {AppComponent, EnumToArrayPipe} from './app.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +33,7 @@ import { MomentModule } from 'angular2-moment';
 import 'moment/locale/hu';
 import {TagInputModule} from 'ngx-chips';
 import { LoadingSpinnerComponent } from './core/loading-spinner/loading-spinner.component';
+import {FamilyService} from './shared/service/family.service';
 
 @NgModule({
   imports: [
@@ -70,12 +71,14 @@ import { LoadingSpinnerComponent } from './core/loading-spinner/loading-spinner.
     EventcardComponent,
     EventcardPostComponent,
     KidcardComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    EnumToArrayPipe
   ],
   providers: [
     EventService,
     UserService,
     KidService,
+    FamilyService,
     RoutingService,
     LoggedInGuard
   ],

@@ -17,11 +17,26 @@
       </figure>
       <p class="profile-detail">
         <span class="profile-label">Születési idő:</span>
-        <input [readonly]="ronly" class="profile-value" formControlName="birthday" value="{{ kid.birthday | amDateFormat: 'LLLL' }}" />
+        <input [readonly]="ronly"
+               value="{{ kid.birthday }}"
+               type="datetime-local"
+               class="profile-value"
+               formControlName="birthday"
+               min="1901-01-01T00:00:00"
+               max="2100-12-31T00:00:00"/>
       </p>
       <p class="profile-detail">
         <span class="profile-label">Nem:</span>
-        <input [readonly]="ronly" class="profile-value" formControlName="sex" value="{{ kid.sex }}" />
+        <select id="inputGroupSelect01"
+                class="custom-select"
+                name="id"
+                formControlName="sex"
+                [(ngModel)]="kid.sex">
+          <option selected hidden disabled value="0">Válassz egy gyermeket!</option>
+          <option *ngFor="let sex of keys(sexEnum)"
+                  [ngValue]="sex"
+                  [attr.selected]="sexEnum[sex] === kid.sex ? true : null">{{sexEnum[sex]}}</option>
+        </select>
       </p>
       <p class="profile-detail">
         <span class="profile-label">Magasság (mm):</span>
@@ -33,7 +48,10 @@
       </p>
       <p class="profile-detail">
         <span class="profile-label">conception:</span>
-        <input [readonly]="ronly" class="profile-value" formControlName="conception" value="{{ kid.conception }}" />
+        <input [readonly]="ronly"
+               class="profile-value"
+               formControlName="conception"
+               value="{{ kid.conception }}" />
       </p>
       <button *ngIf="!ronly" type="submit" role="button">Módosít</button>
     </form>

@@ -1,4 +1,4 @@
 export enum Sex {
-  FEMALE = 'Női',
+  FEMALE = 'Nő',
   MALE = 'Férfi',
 }

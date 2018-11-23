@@ -1,7 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {KidModel} from '../model/kid-model';
 import {Sex} from '../enum/sex.enum';
-import {HttpClient} from '@angular/common/http';;
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -34,7 +34,7 @@ export class KidService implements OnInit {
     return this._kids;
   }
 
-  set kid(value: KidModel) {
+  set addKid(value: KidModel) {
     this._kids = [
       value,
       ...this._kids
