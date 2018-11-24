@@ -2,7 +2,10 @@
   <div class="profile-box small">
     <span class="profile-btn-contact"
           title="edit">
-      <fa [name]="'pencil'" [size]=1 (click)="edit()"></fa>
+      <fa *ngIf="ronly; else cancel" [name]="'pencil'" [size]=1 (click)="edit()"></fa>
+      <ng-template #cancel>
+        <fa [name]="'times-circle-o'" [size]=1 (click)="notMod()"></fa>
+      </ng-template>
     </span>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <figure class="profile-header">
@@ -13,7 +16,10 @@
              [style.background-position]="'top center'"
              [style.background-size]="'cover'">
         </div>
-        <input [readonly]="ronly" class="profile-value profile-name figcaption" formControlName="name" value="{{ kid.name }}" />
+        <input [readonly]="ronly"
+               class="profile-value profile-name figcaption"
+               formControlName="name"
+               value="{{ kid.name }}" />
       </figure>
       <p class="profile-detail">
         <span class="profile-label">Születési idő:</span>
@@ -28,14 +34,16 @@
       <p class="profile-detail">
         <span class="profile-label">Nem:</span>
         <select id="inputGroupSelect01"
-                class="custom-select"
+                class="profile-value"
                 name="id"
                 formControlName="sex"
                 [(ngModel)]="kid.sex">
-          <option selected hidden disabled value="0">Válassz egy gyermeket!</option>
+          <option selected hidden disabled value="0"
+                  class="profile-value">Válassz egy gyermeket!</option>
           <option *ngFor="let sex of keys(sexEnum)"
                   [ngValue]="sex"
-                  [attr.selected]="sexEnum[sex] === kid.sex ? true : null">{{sexEnum[sex]}}</option>
+                  [attr.selected]="sexEnum[sex] === kid.sex ? true : null"
+                  class="profile-value">{{sexEnum[sex]}}</option>
         </select>
       </p>
       <p class="profile-detail">
@@ -53,7 +61,7 @@
                formControlName="conception"
                value="{{ kid.conception }}" />
       </p>
-      <button *ngIf="!ronly" type="submit" role="button">Módosít</button>
+      <button *ngIf="!ronly" type="submit" class="btn btn-primary btn-block" role="button">Módosít</button>
     </form>
   </div>
 </div>

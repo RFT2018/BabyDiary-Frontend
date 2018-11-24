@@ -28,6 +28,24 @@ export class KidcardComponent implements OnInit {
     this.ronly = this.ronly === false ? true : false;
   }
 
+  notMod(): void {
+    this.edit();
+    this.reloadKidData();
+  }
+
+  private reloadKidData() {
+    this.form = this.fb.group(
+      {
+        name: this.kid.name,
+        birthday: this.kid.birthday,
+        sex: this.kid.sex,
+        height: this.kid.height,
+        weight: this.kid.weight,
+        conception: this.kid.conception
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.form = this.fb.group(
       {
