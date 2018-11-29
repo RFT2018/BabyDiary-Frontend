@@ -17,10 +17,10 @@ import {LoggedInGuard} from './shared/logged-in.guard';
 import {EventcardPostComponent} from './elements/eventcard-post/eventcard-post.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/lg', pathMatch: 'full' },
+  { path: 'lg', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
-  { path: 'registration', component: RegistrationComponent },
+  { path: 'rg', component: RegistrationComponent },
   { path: 'child', component: ChildComponent, canActivate: [LoggedInGuard]},
   { path: 'timeline',
     children: [
@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'doc', component: DocComponent, canActivate: [LoggedInGuard] },
   { path: 'chide', component: ChildDevComponent, canActivate: [LoggedInGuard] },
   { path: 'abouts', component: AboutsComponent },
-  { path: '**', component: PageNotFoundComponent, canActivate: [LoggedInGuard] }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -46,16 +46,16 @@ const routes: Routes = [
 export class AppRoutingModule {
   private _timeline = 'timeline';
   private _timelineLink = '/' + this._timeline;
-  private _index = 'login';
+  private _index = 'lg';
   private _indexLink = '/' + this._index;
-  private _login = 'login';
+  private _login = 'lg';
   private _loginLink = '/' + this._login;
   private _loginNextLink = this._timelineLink;
   private _logout = this._login;
   private _logoutLink = '/' + this._logout;
   private _profile = 'profile';
   private _profileLink = '/' + this._profile;
-  private _registration = 'registration';
+  private _registration = 'rg';
   private _registrationLink = '/' + this._registration;
   private _registrationNext = this._profileLink;
   private _child = 'child';

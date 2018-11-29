@@ -20,7 +20,9 @@ export class LoginComponent {
   }
 
   login(email: string, password: string) {
-    if (!this._users.logIn(email, password)) {
+    if (this._users.logIn(email, password)) {
+      this._router.navigate(['/profile'] );
+    } else {
       this.alerts.push({
         type: 'danger',
         msg: `Helytelen belépési adatok!`,

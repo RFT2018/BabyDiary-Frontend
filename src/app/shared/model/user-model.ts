@@ -3,9 +3,9 @@ import {UserRole} from '../enum/user-role.enum';
 
 export class UserModel {
   private _id: number;
+  private _username: string;
   private _email: string;
-  private _password: string;
-  private _nickName: string;
+  private _password?: string;
   private _userRole: UserRole;
   private _firstName?: string;
   private _lastName?: string;
@@ -19,6 +19,14 @@ export class UserModel {
 
   set id(value: number) {
     this._id = value;
+  }
+
+  get username(): string {
+    return this._username;
+  }
+
+  set username(value: string) {
+    this._username = value;
   }
 
   get email(): string {
@@ -35,14 +43,6 @@ export class UserModel {
 
   set password(value: string) {
     this._password = value;
-  }
-
-  get nickName(): string {
-    return this._nickName;
-  }
-
-  set nickName(value: string) {
-    this._nickName = value;
   }
 
   get userRole(): UserRole {

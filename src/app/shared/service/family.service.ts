@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {FamilyModel} from '../model/family-model';
-import {KidModel} from '../model/kid-model';
-import {Sex} from '../enum/sex.enum';
 
 @Injectable({
   providedIn: 'root'

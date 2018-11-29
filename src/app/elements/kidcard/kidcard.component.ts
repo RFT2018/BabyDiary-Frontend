@@ -20,12 +20,11 @@ export class KidcardComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
     this.edit();
   }
 
   edit(): void {
-    this.ronly = this.ronly === false ? true : false;
+    this.ronly = this.ronly === false;
   }
 
   notMod(): void {
@@ -34,16 +33,7 @@ export class KidcardComponent implements OnInit {
   }
 
   private reloadKidData() {
-    this.form = this.fb.group(
-      {
-        name: this.kid.name,
-        birthday: this.kid.birthday,
-        sex: this.kid.sex,
-        height: this.kid.height,
-        weight: this.kid.weight,
-        conception: this.kid.conception
-      }
-    );
+    this.form = this.fb.group(this.kid);
   }
 
   ngOnInit(): void {
