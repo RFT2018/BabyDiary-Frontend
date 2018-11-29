@@ -50,6 +50,7 @@
           </div>
           <div class="form-group">
             <div>Nem: {{ userService.user.sex }}</div>
+            <div>Státusz: {{ userRoleKey[userService.user.userRole] }}</div>
             <div>Regisztrált: {{ userService.user.dateTime | amDateFormat: 'LLL' }}</div>
           </div>
           <div class="card-footer bg-transparent"></div>

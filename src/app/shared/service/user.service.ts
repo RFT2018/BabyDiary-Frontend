@@ -27,7 +27,7 @@ export class UserService {
     const url = '/login';
     const body = JSON.stringify({username: '', password: ''});
     const headers = new HttpHeaders({'Authorization': 'Basic ' + btoa(email + ':' + password)});
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers.append('Content-Type', 'application/json');
     this._http.post<UserModel>(url, body, { headers: headers })
       .pipe(
         catchError(this.handleError)
@@ -35,16 +35,13 @@ export class UserService {
       .subscribe(
         response => {
           this._user = this.getUserExamples;
-          this._user = response;
+          this._user.id = response.id;
+          this._user.email = response.username;
+          this._user.userRole = response.userRole;
           console.log(this._user);
           this._isLoggedIn = true;
           this._router.navigate(['/profile'] );
           return true;
-        }, err => {
-          if (err.status === 401 || err.status === 403) {
-            this._router.navigate(['/lg'] );
-          }
-          return false;
         });
     return false;
   }
@@ -61,17 +58,29 @@ export class UserService {
 
   register(email: string, password: string, username?: string) {
     const nick = username ? username : 'Felhasználó';
-    const um = new UserModel();
-    um.id = 1;
-    um.email = email;
-    um.password = password;
-    um.username = nick;
-    um.userRole = UserRole.ADMIN;
-    um.sex = Sex.MALE;
-    um.dateTime = new Date();
-    this._user = um;
-    this._isLoggedIn = true;
-    this._router.navigate(['/profile'] );
+    const url = '/register';
+    const body = JSON.stringify({
+      username: nick,
+      email: email,
+      password: password,
+      userRole: 'PARENT'});
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    console.log(body);
+    headers.append('Content-Type', 'application/json');
+    this._http.post<UserModel>(url, body, { headers: headers })
+      .pipe(
+        catchError(this.handleError)
+      )
+      .subscribe(
+        response => {
+          this._user = this.getUserExamples;
+          this._user.id = response.id;
+          this._user.email = response.username;
+          this._user.userRole = response.userRole;
+          console.log(this._user);
+          this._isLoggedIn = true;
+          this._router.navigate(['/profile'] );
+        });
   }
 
   get isLoggedIn(): boolean {
