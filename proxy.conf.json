@@ -6,5 +6,21 @@
   "/register": {
     "target": "http://localhost:8080",
     "secure": false
+  },
+  "/wishlist/*": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/album/*": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/child/*": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/family/*": {
+    "target": "http://localhost:8080",
+    "secure": false
   }
 }

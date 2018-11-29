@@ -17,7 +17,7 @@ export class EventcardPostComponent implements OnInit {
   idURL: string;
   alerts: any[] = [];
   private _actualEvent: EventModel;
-  kids$: Observable<KidModel[]>
+  kids$: Observable<KidModel[]>;
 
   constructor(private _route: ActivatedRoute,
               private _router: Router,
@@ -96,7 +96,7 @@ export class EventcardPostComponent implements OnInit {
   ngOnInit(): void {
     const handle404 = () => {
       this._router.navigate(['404']);
-    }
+    };
     // this.idURL = this._route.snapshot.params['id'];
     this._route.paramMap.subscribe(
       (params: ParamMap) => {
@@ -108,7 +108,7 @@ export class EventcardPostComponent implements OnInit {
       }, err => {
         return handle404();
       }
-    )
+    );
     if (this.idURL === '0') {
       this.actualEvent = this._eventService.emtyEvent;
       this.actualEvent.id = this._eventService.maxEventId + 1;
