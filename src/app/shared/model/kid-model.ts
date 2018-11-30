@@ -6,12 +6,37 @@ export class KidModel {
 
   private _id: number;
   private _birthday: Date;
-  private _name: string;
+  private _firstName: string;
+  private _lastName: string;
   private _sex: Sex;
+  private _conception: Date;
   private _height: string;
   private _weight: string;
-  private _conception: string;
-  private _picture: string;
+  private _albums: number[];
+
+  get firstName(): string {
+    return this._firstName;
+  }
+
+  set firstName(value: string) {
+    this._firstName = value;
+  }
+
+  get lastName(): string {
+    return this._lastName;
+  }
+
+  set lastName(value: string) {
+    this._lastName = value;
+  }
+
+  get albums(): number[] {
+    return this._albums;
+  }
+
+  set albums(value: number[]) {
+    this._albums = value;
+  }
 
   get id(): number {
     return this._id;
@@ -27,14 +52,6 @@ export class KidModel {
 
   set birthday(value: Date) {
     this._birthday = value;
-  }
-
-  get name(): string {
-    return this._name;
-  }
-
-  set name(value: string) {
-    this._name = value;
   }
 
   get sex(): Sex {
@@ -61,20 +78,12 @@ export class KidModel {
     this._weight = value;
   }
 
-  get conception(): string {
+  get conception(): Date {
     return this._conception;
   }
 
-  set conception(value: string) {
+  set conception(value: Date) {
     this._conception = value;
-  }
-
-  get picture(): string {
-    return this._picture;
-  }
-
-  set picture(value: string) {
-    this._picture = value;
   }
 
   constructor(param?: KidModel) {

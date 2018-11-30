@@ -55,14 +55,16 @@ export class KidService implements OnInit {
 
   get emtyKid(): KidModel {
     const km = new KidModel();
+    const dt = new Date();
     km.id = 1;
-    km.birthday = new Date();
-    km.name = '?';
+    km.birthday = new Date(dt.getTime() + (1000 * 60 * 60 * 24 * 30 * 9));
+    km.firstName = '';
+    km.lastName = '';
     km.sex = Sex.MALE;
     km.height = '0';
     km.weight = '0';
-    km.conception = '0';
-    km.picture = 'ed8bd06e-8034-4163-a9d5-7b589565c100.png';
+    km.conception = new Date();
+    km.albums = [];
     return km;
   }
 

@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {KidModel} from '../../shared/model/kid-model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Sex} from '../../shared/enum/sex.enum';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {WishlistModel} from '../../shared/model/wishlist-model';
+import {UserService} from '../../shared/service/user.service';
+import {AlbumModel} from '../../shared/model/album-model';
 
 @Component({
   selector: 'app-kidcard',
@@ -14,9 +18,15 @@ export class KidcardComponent implements OnInit {
   ronly = true;
   keys = Object.keys;
   sexEnum = Sex;
+  private _mail = '';
+  private _pass = '';
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private _http: HttpClient,
+              private _userService: UserService) {
+    this._mail = _userService.user.email;
+    this. _pass = _userService.user.password;
   }
 
   onSubmit() {
@@ -50,7 +60,23 @@ export class KidcardComponent implements OnInit {
   }
 
   kinderPicture(kid: KidModel): string {
-    return './assets/temporary/pictures/kids/' + kid.picture;
+    let pic = '';
+    if (kid.albums[0] !== null) {
+      pic = './assets/temporary/pictures/kids/ed8bd06e-8034-4163-a9d5-7b589565c100.png';
+    } else {
+      const url = '/album/get/' + kid.albums[0];
+      const headers = new HttpHeaders({
+        'Authorization': 'Basic ' + btoa(this._mail + ':' + this._pass),
+        'Content-Type': 'application/json'
+      });
+      this._http.get<AlbumModel>(url, {headers: headers}).subscribe(data => {
+        pic = data.link;
+      },
+          err => {
+          console.log('Error occured');
+        });
+    }
+    return pic;
   }
 
 }

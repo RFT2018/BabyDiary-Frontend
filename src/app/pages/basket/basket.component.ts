@@ -12,7 +12,7 @@ export class BasketComponent implements OnInit {
 
   newBasket: WishlistModel;
   baskets: WishlistModel[];
-  private _lastRandom: number;
+  private _lastRandom = 0;
 
   constructor(
     private _router: Router,
@@ -27,36 +27,32 @@ export class BasketComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form);
-    this.newBasket.item = form.item;
-    this.newBasket.price = +form.price;
-    this._basketService.postNew(this.newBasket.item, this.newBasket.price);
-    this._router.navigate(['/basket'] );
+    if (form.item.length > 0 && +form.price > 0) {
+      this.newBasket.item = form.item;
+      this.newBasket.price = +form.price;
+      this._basketService.postNew(this.newBasket.item, this.newBasket.price);
+      this.newBasket = this._basketService.emtyWish;
+    }
+    this._basketService.getAll().subscribe(data => {
+      this.baskets = data;
+    });
   }
 
-  calculateStyles(): string {
-    switch (this.randomNum()) {
-      case 1: {
-        return 'bg-primary';
-      }
-      case 2: {
-        return 'bg-secondary';
-      }
-      case 3: {
-        return 'bg-success';
-      }
-      case 4: {
-        return 'bg-warning';
-      }
-      case 5: {
-        return 'bg-warning';
-      }
-      case 6: {
-        return 'bg-info';
-      }
-      case 7: {
-        return 'bg-dark';
-      }
+  calculateStyles(num: number): string {
+    if (num < 10) {
+      return 'list-group-item bg-primary';
+    } else if (num < 100) {
+      return 'list-group-item bg-secondary';
+    } else if (num < 1000) {
+      return 'list-group-item bg-success';
+    } else if (num < 10000) {
+      return 'list-group-item bg-warning';
+    } else if (num < 100000) {
+      return 'list-group-item bg-warning';
+    } else if (num < 1000000) {
+      return 'list-group-item bg-info';
+    } else {
+      return 'list-group-item bg-dark';
     }
   }
 
@@ -67,6 +63,7 @@ export class BasketComponent implements OnInit {
       n = Math.floor(Math.random() * (7 - 1)) + 1;
     }
     this._lastRandom = n;
+    console.log(n);
     return n;
   }
 }

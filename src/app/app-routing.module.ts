@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'lg', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
   { path: 'rg', component: RegistrationComponent },
-  { path: 'child', component: ChildComponent, canActivate: [LoggedInGuard]},
+  { path: 'ch', component: ChildComponent, canActivate: [LoggedInGuard]},
   { path: 'timeline',
     children: [
       {path: '', component: TimelineComponent, canActivate: [LoggedInGuard]},
@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'multimedia', component: MultimediaComponent, canActivate: [LoggedInGuard] },
   { path: 'recipe', component: RecipeComponent, canActivate: [LoggedInGuard] },
   { path: 'doc', component: DocComponent, canActivate: [LoggedInGuard] },
-  { path: 'chide', component: ChildDevComponent, canActivate: [LoggedInGuard] },
+  { path: 'ch', component: ChildDevComponent, canActivate: [LoggedInGuard] },
   { path: 'abouts', component: AboutsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -58,7 +58,7 @@ export class AppRoutingModule {
   private _registration = 'rg';
   private _registrationLink = '/' + this._registration;
   private _registrationNext = this._profileLink;
-  private _child = 'child';
+  private _child = 'ch';
   private _childLink = '/' + this._child;
   private _basket = 'basket';
   private _basketLink = '/' + this._basket;
