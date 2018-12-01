@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class EventService implements OnInit {
@@ -23,8 +23,26 @@ export class EventService implements OnInit {
       );
   }
 
-  setEventByFirebaseio(event: EventModel) {
-    return this._http.put(`${environment.firebase.baseUrl}/event.json`, event);
+  setEventByFirebaseio(event: EventModel): void {
+    const body = JSON.stringify({
+      id: event.id,
+      kinder: +event.kinder,
+      title: event.title,
+      bodyText: event.bodyText,
+      dateTime: event.dateTime.toString(),
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const req = this._http.post(`${environment.firebase.baseUrl}/event.json`, body, { headers: headers })
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
   }
 
   sortEvents(): void {
@@ -32,7 +50,6 @@ export class EventService implements OnInit {
       this._events = this._events.sort((a: EventModel, b: EventModel) => {
         return b.dateTime.valueOf() - a.dateTime.valueOf();
       });
-      console.log(this._events);
     }
   }
 
@@ -49,7 +66,9 @@ export class EventService implements OnInit {
     this._events = [
       value,
       ...this._events
-    ];
+    ].sort((a: EventModel, b: EventModel) => {
+      return b.dateTime.valueOf() - a.dateTime.valueOf();
+    });
     this.setEventByFirebaseio(value);
   }
 
@@ -60,7 +79,7 @@ export class EventService implements OnInit {
                 dateTime: Date) {
     const em = new EventModel();
     em.id = id;
-    // em.kinder = this._kidService.getOne(kinder);
+    em.kinder = kinder;
     em.title = title;
     em.bodyText = bodyText;
     em.dateTime = new Date(dateTime);
@@ -68,7 +87,9 @@ export class EventService implements OnInit {
     this._events = [
       em,
       ...this._events
-    ];
+    ].sort((a: EventModel, b: EventModel) => {
+      return b.dateTime.valueOf() - a.dateTime.valueOf();
+    });
   }
 
   setEventByTag(id: number,

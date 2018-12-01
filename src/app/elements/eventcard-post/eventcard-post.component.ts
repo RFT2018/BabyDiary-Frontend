@@ -18,7 +18,7 @@ export class EventcardPostComponent implements OnInit {
   alerts: any[] = [];
   private _actualEvent: EventModel;
   kids$: Observable<KidModel[]>;
-  private _onlineEvents: EventModel[];
+  maxEventId = 0;
 
   constructor(private _route: ActivatedRoute,
               private _router: Router,
@@ -46,7 +46,7 @@ export class EventcardPostComponent implements OnInit {
     return em.kinder;
   }
 
-  onSubmit(form) {
+  onSubmit(form, id: number) {
     if (!form.id || !form.title || !form.bodyText || !form.dateTime) {
       if (form.id === 'Válassz...') {
         this.alerts.push({
@@ -78,9 +78,16 @@ export class EventcardPostComponent implements OnInit {
       }
     } else {
       if (this.idURL === '0') {
-        this._eventService.addEventByTag(this._eventService.maxEventId + 1, form.id, form.title, form.bodyText, form.dateTime);
+        this._eventService.getAllEventByFirebaseio().subscribe(data => {
+          for (const ae of data) {
+            if (ae.id > this.maxEventId) {
+              this.maxEventId = ae.id;
+            }
+          }
+          this._eventService.addEventByTag(++this.maxEventId, form.id, form.title, form.bodyText, form.dateTime);
+        });
       } else {
-        this._eventService.setEventByTag(+this.idURL, form.id, form.title, form.bodyText, form.dateTime);
+        // this._eventService.setEventByTag(+this.idURL, form.id, form.title, form.bodyText, form.dateTime);
       }
       this._router.navigate(['/timeline'] );
     }

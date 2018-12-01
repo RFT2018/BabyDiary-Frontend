@@ -38,7 +38,9 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit(): void {
     this._eventService.getAllEventByFirebaseio().subscribe(data => {
-      this.onlineEvents = data;
+      this.onlineEvents = data.sort((a: EventModel, b: EventModel) => {
+        return new Date(b.dateTime).valueOf() - new Date(a.dateTime).valueOf();
+      });
     });
   }
 }
