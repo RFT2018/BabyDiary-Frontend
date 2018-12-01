@@ -66,13 +66,11 @@ export class UserService {
     const nick = username ? username : 'Felhasználó';
     const url = '/register';
     const body = JSON.stringify({
-      username: nick,
-      email: email,
+      username: email,
+      email: nick,
       password: password,
       userRole: 'PARENT'});
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    console.log(body);
-    headers.append('Content-Type', 'application/json');
     this._http.post<UserModel>(url, body, { headers: headers })
       .pipe(
         catchError(this.handleError)

@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeComponent implements OnInit {
 
+  time = false;
+
   constructor() { }
 
   ngOnInit() {
+    this.setTimeout();
   }
 
+  setTimeout() {
+    setTimeout(
+      () => {
+        this.time = true;
+      }, 5000
+    );
+  }
 }
