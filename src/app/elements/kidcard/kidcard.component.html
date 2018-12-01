@@ -10,30 +10,25 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <figure class="profile-header">
         <div class="profile-img"
-             [style.background]="'#75ce66'"
-             [style.background]="'url(' + kinderPicture(kid) + ')'"
+             [style.background-colour]="'#75ce66'"
+             [style.background-image]="'url(' + kid?.albums[0]?.link + ')'"
              [style.background-repeat]="'no-repeat'"
              [style.background-position]="'top center'"
              [style.background-size]="'cover'">
         </div>
-        <input [readonly]="ronly"
-               class="profile-value profile-name figcaption"
-               formControlName="lastName"
-               value="{{ kid.lastName }}" />
-        <input [readonly]="ronly"
-               class="profile-value profile-name figcaption"
-               formControlName="firstName"
-               value="{{ kid.firstName }}" />
+        <div  class="profile-name">
+          {{ kid.lastName }} {{ kid.firstName }}
+        </div>
       </figure>
       <p class="profile-detail">
         <span class="profile-label">Születési idő:</span>
         <input [readonly]="ronly"
-               value="{{ kid.birthday }}"
-               type="datetime-local"
+               [ngModel] ="kid.birthday | date:'yyyy-MM-dd'"
+               type="date"
                class="profile-value"
                formControlName="birthday"
-               min="1901-01-01T00:00:00"
-               max="2100-12-31T00:00:00"/>
+               min="1901-01-01"
+               max="2100-12-31"/>
       </p>
       <p class="profile-detail">
         <span class="profile-label">Nem:</span>
@@ -50,14 +45,14 @@
                   class="profile-value">{{sexEnum[sex]}}</option>
         </select>
       </p>
-      <p class="profile-detail">
+      <p *ngIf="false" class="profile-detail">
         <span class="profile-label">Magasság (mm):</span>
         <input [readonly]="ronly"
                class="profile-value"
                formControlName="height"
                value="{{ kid.height }}" />
       </p>
-      <p class="profile-detail">
+      <p *ngIf="false" class="profile-detail">
         <span class="profile-label">Átmérő (mm):</span>
         <input [readonly]="ronly"
                class="profile-value"
@@ -67,8 +62,8 @@
       <p class="profile-detail">
         <span class="profile-label">Megfogant:</span>
         <input [readonly]="ronly"
-               value="{{ kid.conception }}"
-               type="datetime-local"
+               [ngModel] ="kid.conception | date:'yyyy-MM-dd'"
+               type="date"
                class="profile-value"
                formControlName="conception"
                min="1901-01-01T00:00:00"

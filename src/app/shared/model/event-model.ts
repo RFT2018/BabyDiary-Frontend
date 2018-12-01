@@ -1,9 +1,7 @@
-import {KidModel} from './kid-model';
-
 export class EventModel {
 
   private _id: number;
-  private _kinder: KidModel;
+  private _kinder: number;
   private _title: string;
   private _bodyText: string;
   private _dateTime: Date;
@@ -16,15 +14,11 @@ export class EventModel {
     this._id = value;
   }
 
-  get kinder(): KidModel {
+  get kinder(): number {
     return this._kinder;
   }
 
-  get kinderId(): number {
-    return this._kinder.id;
-  }
-
-  set kinder(value: KidModel) {
+  set kinder(value: number) {
     this._kinder = value;
   }
 

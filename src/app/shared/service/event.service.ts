@@ -1,11 +1,11 @@
 import {Injectable, OnInit} from '@angular/core';
 import {EventModel} from '../model/event-model';
-import {KidService} from './kid.service';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
+import {KidService} from './kid.service';
 
 @Injectable()
 export class EventService implements OnInit {
@@ -13,7 +13,6 @@ export class EventService implements OnInit {
   private _events: EventModel[];
 
   constructor(private _router: Router,
-              private _kidService: KidService,
               private _http: HttpClient) {
     this.sortEvents();
   }
@@ -28,7 +27,6 @@ export class EventService implements OnInit {
   setEventByFirebaseio(event: EventModel) {
     return this._http.put(`${environment.firebase.baseUrl}/event.json`, event);
   }
-
 
   sortEvents(): void {
     if (this._events != null) {
@@ -56,19 +54,17 @@ export class EventService implements OnInit {
     this.setEventByFirebaseio(value);
   }
 
-  addEventByTag(_id: number,
-                _kinder: number,
-                _title: string,
-                _bodyText: string,
-                _dateTime: Date) {
+  addEventByTag(id: number,
+                kinder: number,
+                title: string,
+                bodyText: string,
+                dateTime: Date) {
     const em = new EventModel();
-    em.id = _id;
-    em.kinder = this._kidService.kidById(_kinder);
-    em.title = _title;
-    em.bodyText = _bodyText;
-    em.dateTime = new Date(_dateTime);
-    console.log('em kész');
-    console.log(em);
+    em.id = id;
+    // em.kinder = this._kidService.getOne(kinder);
+    em.title = title;
+    em.bodyText = bodyText;
+    em.dateTime = new Date(dateTime);
     this.setEventByFirebaseio(em);
     this._events = [
       em,
@@ -76,17 +72,17 @@ export class EventService implements OnInit {
     ];
   }
 
-  setEventByTag(_id: number,
-                _kinder: number,
-                _title: string,
-                _bodyText: string,
-                _dateTime: Date) {
+  setEventByTag(id: number,
+                kinder: number,
+                title: string,
+                bodyText: string,
+                dateTime: Date) {
     const em = new EventModel();
-    em.id = _id;
-    em.kinder = this._kidService.kidById(_kinder);
-    em.title = _title;
-    em.bodyText = _bodyText;
-    em.dateTime = new Date(_dateTime);
+    em.id = id;
+    // em.kinder = this._kidService.getOne(kinder);
+    em.title = title;
+    em.bodyText = bodyText;
+    em.dateTime = new Date(dateTime);
     const eventAll = this._events.filter(u => u.id !== em.id);
     this._events = [
       em,
@@ -109,7 +105,7 @@ export class EventService implements OnInit {
   get emtyEvent(): EventModel {
     const em = new EventModel();
     em.id = 1;
-    em.kinder = this._kidService.emtyKid;
+    // em.kinder = this._kidService.emtyKid;
     em.title = '';
     em.bodyText = '';
     em.dateTime = new Date();
@@ -119,7 +115,7 @@ export class EventService implements OnInit {
   loginEvent(): void {
     const em = new EventModel();
     em.id = 1;
-    em.kinder = this._kidService.emtyKid;
+    // em.kinder = this._kidService.emtyKid;
     em.title = 'Utoljára belépett';
     em.bodyText = '';
     em.dateTime = new Date();

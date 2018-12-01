@@ -33,9 +33,9 @@ export class EventcardPostComponent implements OnInit {
     this._actualEvent = value;
   }
 
-  get kiders(): KidModel[] {
-    return this._kidService.kids;
-  }
+  // get kiders(): KidModel[] {
+  //   return this._kidService.kids;
+  // }
 
   inputDateFormat(em: EventModel): string {
     return em.dateTime.getFullYear().toString() + '-'
@@ -46,7 +46,7 @@ export class EventcardPostComponent implements OnInit {
   }
 
   selectKidId(em: EventModel): number {
-    return em.kinder.id;
+    return em.kinder;
   }
 
   onSubmit(form) {
@@ -116,7 +116,7 @@ export class EventcardPostComponent implements OnInit {
     } else {
       this.actualEvent = this._eventService.eventById(+this.idURL);
     }
-    this.kids$ = this._kidService.getAllKidByFirebaseio();
+    this.kids$ = this._kidService.getAll();
   }
 }
 

@@ -34,6 +34,8 @@ import 'moment/locale/hu';
 import {TagInputModule} from 'ngx-chips';
 import { LoadingSpinnerComponent } from './core/loading-spinner/loading-spinner.component';
 import {FamilyService} from './shared/service/family.service';
+import {AlbumService} from './shared/service/album.service';
+import {WishlistService} from './shared/service/wishlist.service';
 
 @NgModule({
   imports: [
@@ -75,11 +77,13 @@ import {FamilyService} from './shared/service/family.service';
     EnumToArrayPipe
   ],
   providers: [
+    AlbumService,
     EventService,
-    UserService,
-    KidService,
     FamilyService,
+    KidService,
     RoutingService,
+    UserService,
+    WishlistService,
     LoggedInGuard
   ],
   bootstrap: [

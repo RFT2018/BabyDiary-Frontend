@@ -3,7 +3,6 @@ import {KidModel} from '../../shared/model/kid-model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Sex} from '../../shared/enum/sex.enum';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {WishlistModel} from '../../shared/model/wishlist-model';
 import {UserService} from '../../shared/service/user.service';
 import {AlbumModel} from '../../shared/model/album-model';
 
@@ -26,11 +25,16 @@ export class KidcardComponent implements OnInit {
               private _http: HttpClient,
               private _userService: UserService) {
     this._mail = _userService.user.email;
-    this. _pass = _userService.user.password;
+    this._pass = _userService.user.password;
   }
 
   onSubmit() {
     this.edit();
+  }
+
+  toDate(st: string) {
+    console.log(new Date(st));
+    return new Date();
   }
 
   edit(): void {
@@ -78,5 +82,4 @@ export class KidcardComponent implements OnInit {
     }
     return pic;
   }
-
 }

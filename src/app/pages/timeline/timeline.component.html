@@ -12,11 +12,6 @@
     <section id="cd-timeline" class="cd-container">
       <app-eventcard
         class="cd-timeline-block"
-        *ngFor="let ec of events"
-        [esemeny]="ec">
-      </app-eventcard>
-      <app-eventcard
-        class="cd-timeline-block"
         *ngFor="let ec of onlineEvents"
         [esemeny]="ec">
       </app-eventcard>

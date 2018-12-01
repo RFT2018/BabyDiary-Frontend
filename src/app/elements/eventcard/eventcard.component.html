@@ -1,13 +1,13 @@
-<div class="cd-timeline-img cd-picture"
-     [style.background]="'#75ce66'"
-     [style.background]="'url(' + kinderPicture(esemeny.kinder.picture) + ')'"
+<div class="cd-timeline-img cd-picture "
+     [style.background-color]="'#75ce66'"
+     [style.background-image]="'url(' + kinderPicture + ')'"
      [style.background-repeat]="'no-repeat'"
-     [style.background-position]="'center'"
+     [style.background-position]="'top center'"
      [style.background-size]="'cover'"
      [routerLink]="['/child' ]"></div>
 <div class="cd-timeline-content">
   <fa [name]="'pencil'"
-      [size]=2
+      [size]="2"
       [routerLink]="['/timeline/' + esemeny.id + '/edit' ]"
       [hidden]="!esemeny.bodyText"></fa>
   <h2>{{ smallTitleText(esemeny) }}</h2>

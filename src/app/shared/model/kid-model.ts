@@ -1,18 +1,19 @@
 import {Sex} from '../enum/sex.enum';
 import {FunfactModel} from './funfact-model';
 import {EventModel} from './event-model';
+import {AlbumModel} from './album-model';
 
 export class KidModel {
 
   private _id: number;
-  private _birthday: Date;
+  private _birthday: string;
   private _firstName: string;
   private _lastName: string;
   private _sex: Sex;
-  private _conception: Date;
-  private _height: string;
-  private _weight: string;
-  private _albums: number[];
+  private _conception: string;
+  private _height?: string;
+  private _weight?: string;
+  private _albums: AlbumModel[];
 
   get firstName(): string {
     return this._firstName;
@@ -30,28 +31,12 @@ export class KidModel {
     this._lastName = value;
   }
 
-  get albums(): number[] {
-    return this._albums;
-  }
-
-  set albums(value: number[]) {
-    this._albums = value;
-  }
-
   get id(): number {
     return this._id;
   }
 
   set id(value: number) {
     this._id = value;
-  }
-
-  get birthday(): Date {
-    return this._birthday;
-  }
-
-  set birthday(value: Date) {
-    this._birthday = value;
   }
 
   get sex(): Sex {
@@ -78,11 +63,27 @@ export class KidModel {
     this._weight = value;
   }
 
-  get conception(): Date {
+  get albums(): AlbumModel[] {
+    return this._albums;
+  }
+
+  set albums(value: AlbumModel[]) {
+    this._albums = value;
+  }
+
+  get birthday(): string {
+    return this._birthday;
+  }
+
+  set birthday(value: string) {
+    this._birthday = value;
+  }
+
+  get conception(): string {
     return this._conception;
   }
 
-  set conception(value: Date) {
+  set conception(value: string) {
     this._conception = value;
   }
 

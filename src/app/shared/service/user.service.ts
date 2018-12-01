@@ -43,7 +43,6 @@ export class UserService {
         response => {
           this._user = this.getUserExamples;
           this._user.id = response.id;
-          this._user.email = response.username;
           this._user.password = password;
           this._user.userRole = response.userRole;
           this._isLoggedIn = true;

@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {EventModel} from '../../shared/model/event-model';
 import {EventService} from '../../shared/service/event.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import {KidModel} from '../../shared/model/kid-model';
 
 @Component({
   selector: 'app-timeline',
@@ -11,7 +9,7 @@ import {KidModel} from '../../shared/model/kid-model';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  events: EventModel[];
+
   onlineEvents: EventModel[];
   newEventButtomText: string;
   idURL = this._route.snapshot.params['id'];
@@ -23,7 +21,6 @@ export class TimelineComponent implements OnInit {
   }
 
   loadEvents() {
-    this.events = this._eventService.events;
     if (this.idURL) {
       this.newEventButtomText = 'Vissza';
     } else {

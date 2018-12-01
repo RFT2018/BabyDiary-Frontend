@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {EventModel} from '../../shared/model/event-model';
 import {ModalDirective} from 'ngx-bootstrap';
-import {KidModel} from '../../shared/model/kid-model';
 import {KidService} from '../../shared/service/kid.service';
+import {KidModel} from '../../shared/model/kid-model';
 
 @Component({
   selector: 'app-eventcard',
@@ -13,8 +13,11 @@ export class EventcardComponent implements OnInit {
 
   @ViewChild('childModal') childModal: ModalDirective;
   @Input() esemeny: EventModel;
+  private _kidModel: KidModel;
 
-  constructor() { }
+  constructor(
+    private _kidService: KidService
+  ) { }
 
   showChildModal(): void {
     this.childModal.show();
@@ -29,10 +32,15 @@ export class EventcardComponent implements OnInit {
   smallBodyText(esemeny: EventModel): string {
     return esemeny.bodyText.length > 100 ? esemeny.bodyText.substr(0, 100) + '...' : esemeny.bodyText;
   }
-  kinderPicture(id: string): string {
-    return './assets/temporary/pictures/kids/' + id;
+  get kinderPicture(): string {
+    return this._kidModel ?
+      this._kidModel.albums[0].link :
+      './assets/temporary/pictures/kids/ed8bd06e-8034-4163-a9d5-7b589565c100.png';
   }
 
   ngOnInit(): void {
+    this._kidService.getOne(this.esemeny.kinder).subscribe(data => {
+      this._kidModel = data;
+    });
   }
 }
