@@ -5,7 +5,6 @@ import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-import {KidService} from './kid.service';
 
 @Injectable()
 export class EventService implements OnInit {
@@ -105,9 +104,9 @@ export class EventService implements OnInit {
   get emtyEvent(): EventModel {
     const em = new EventModel();
     em.id = 1;
-    // em.kinder = this._kidService.emtyKid;
-    em.title = '';
-    em.bodyText = '';
+    em.kinder = null;
+    em.title = null;
+    em.bodyText = null;
     em.dateTime = new Date();
     return em;
   }

@@ -14,10 +14,11 @@ import {Observable} from 'rxjs';
 })
 export class EventcardPostComponent implements OnInit {
 
-  idURL: string;
+  idURL = this._route.snapshot.params['id'];
   alerts: any[] = [];
   private _actualEvent: EventModel;
   kids$: Observable<KidModel[]>;
+  private _onlineEvents: EventModel[];
 
   constructor(private _route: ActivatedRoute,
               private _router: Router,
@@ -32,10 +33,6 @@ export class EventcardPostComponent implements OnInit {
   set actualEvent(value: EventModel) {
     this._actualEvent = value;
   }
-
-  // get kiders(): KidModel[] {
-  //   return this._kidService.kids;
-  // }
 
   inputDateFormat(em: EventModel): string {
     return em.dateTime.getFullYear().toString() + '-'
@@ -97,7 +94,6 @@ export class EventcardPostComponent implements OnInit {
     const handle404 = () => {
       this._router.navigate(['404']);
     };
-    // this.idURL = this._route.snapshot.params['id'];
     this._route.paramMap.subscribe(
       (params: ParamMap) => {
         if (params === null) {
@@ -111,10 +107,15 @@ export class EventcardPostComponent implements OnInit {
     );
     if (this.idURL === '0') {
       this.actualEvent = this._eventService.emtyEvent;
-      this.actualEvent.id = this._eventService.maxEventId + 1;
-      this.actualEvent.dateTime = new Date();
     } else {
-      this.actualEvent = this._eventService.eventById(+this.idURL);
+      this._eventService.getAllEventByFirebaseio().subscribe(data => {
+        for (const ae of data) {
+          if (ae.id === +this.idURL) {
+            this.actualEvent = ae;
+            this.actualEvent.dateTime = new Date(ae.dateTime);
+          }
+        }
+      });
     }
     this.kids$ = this._kidService.getAll();
   }
